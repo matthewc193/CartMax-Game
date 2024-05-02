@@ -5,10 +5,33 @@ public abstract class tower {
     double reloadSpeed;
     String resourceType;
     double cost;
-    abstract int getResourceAmount();
 
-    abstract double getReloadSpeed();
+    int getResourceAmount() {
+        return resourceAmount;
+    }
 
-    abstract String getResourceType();
-    abstract double getCost();
+    double getReloadSpeed() {
+        return reloadSpeed;
+    }
+
+    String getResourceType() {
+        return resourceType;
+    }
+
+    double getCost() {
+        return cost;
+    }
+    // All tower types should allow for upgrades at a certain cost
+    public  void upgradeResourceAmount(){
+        // Only allow if player has enough in bank balance
+        this.resourceAmount += 1;
+        // Implement Function that decrease user bank balance
+    }
+
+    public  void upgradeReloadSpeed(){
+        // Only allow if player has enough in bank balance
+        this.reloadSpeed -= 0.2;
+        // Implement Function that decrease user bank balance
+    }
+
 }

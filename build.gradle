@@ -3,6 +3,7 @@ plugins {
     id 'java'
     id "org.openjfx.javafxplugin" version "0.1.0"
     id 'jacoco'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 archivesBaseName = 'seng201_team0'
@@ -13,8 +14,6 @@ mainClassName = 'seng201.team0.App'
 def javaVersion = '17'
 def javafxVersion = '21.0.2'
 
-sourceCompatibility = "${javaVersion}"
-targetCompatibility = "${javaVersion}"
 
 repositories {
     mavenCentral()
@@ -32,6 +31,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
 }
 
@@ -76,4 +76,7 @@ jacocoTestReport {
     reports {
         html.destination file("${buildDir}/reports/tests/coverage/")
     }
+}
+kotlin {
+    jvmToolchain(17)
 }
