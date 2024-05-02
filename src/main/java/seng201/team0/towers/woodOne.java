@@ -1,6 +1,6 @@
 package seng201.team0.towers;
 
-public class woodOne extends tower{
+public class woodOne extends Tower {
     // Set to default values
     public woodOne(){
         this.resourceType = "Wood";

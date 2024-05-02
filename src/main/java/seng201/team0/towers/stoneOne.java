@@ -1,6 +1,6 @@
 package seng201.team0.towers;
 
-public class stoneOne extends tower{
+public class stoneOne extends Tower {
     public stoneOne(){
         this.resourceType = "Stone";
         this.cost = 120;

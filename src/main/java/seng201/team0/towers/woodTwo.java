@@ -1,6 +1,6 @@
 package seng201.team0.towers;
 
-public class woodTwo extends tower{
+public class woodTwo extends Tower {
     public woodTwo(){
         this.resourceType = "Wood";
         this.cost = 200;
