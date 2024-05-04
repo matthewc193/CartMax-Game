@@ -8,4 +8,5 @@ public class woodOne extends Tower {
         this.reloadSpeed = 2.0;
         this.resourceAmount = 10;
     }
+
 }

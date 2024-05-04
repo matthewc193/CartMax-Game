@@ -9,10 +9,10 @@ public abstract class Tower {
     /**
      * Basic Getter methods
      */
-    int getResourceAmount() {return resourceAmount;}
-    double getReloadSpeed() {return reloadSpeed;}
-    String getResourceType() {return resourceType;}
-    double getCost() {return cost;}
+    public int getResourceAmount() {return resourceAmount;}
+    public double getReloadSpeed() {return reloadSpeed;}
+    public String getResourceType() {return resourceType;}
+    public double getCost() {return cost;}
 
     /**
      * Upgrade methods
