@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="127.0" layoutY="33.0" text="Welcome to Cart Max">
+         <font>
+            <Font name="Verdana Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="70.0" text="Game Set up" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="101.0" text="Player Name" />
+      <TextField layoutX="232.0" layoutY="130.0" />
+   </children>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package seng201.team0.towers;
 
+import seng201.team0.Player;
+
 public abstract class Tower {
     int resourceAmount;
     double reloadSpeed;
@@ -15,20 +17,39 @@ public abstract class Tower {
     public double getCost() {return cost;}
 
     /**
-     * Upgrade methods
-     * All upgrades comes at a cost
+     * If player has enough money to upgrade the resourceAmount
+     * the player is charged 20 and resourceAmount is increased by 2.
+     * @param player
+     * @return true is player has sufficient funds, false otherwise
      */
-    // All tower types should allow for upgrades at a certain cost
-    public  void upgradeResourceAmount(){
-        // Only allow if player has enough in bank balance
-        this.resourceAmount += 1;
-        // Implement Function that decrease user bank balance
+    public boolean upgradeResourceAmount(Player player){
+        if(player.getMoney() >= 20){
+            player.decreaseMoney(20);
+            this.resourceAmount += 2;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
-    public  void upgradeReloadSpeed(){
-        // Only allow if player has enough in bank balance
-        this.reloadSpeed -= 0.2;
-        // Implement Function that decrease user bank balance
+    /**
+     * If player has enough money to upgrade the reload speed
+     * the player is charged 20 and reload speed is decrease by 2.0.
+     * @param player
+     * @return true is player has sufficient funds.
+     * false if player has insufficient funds or reload speed is at its minimum(1.0)
+     */
+    public boolean upgradeReloadSpeed(Player player){
+        if(player.getMoney() >= 20 && this.reloadSpeed > 1.0){
+            player.decreaseMoney(20);
+            this.reloadSpeed -= 0.2;
+            this.reloadSpeed = Math.round(this.reloadSpeed * 10.0)/10.0;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
