@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetUpScreenController">
    <children>
-      <Label layoutX="127.0" layoutY="33.0" text="Welcome to Cart Max">
+      <Label layoutX="127.0" layoutY="21.0" text="Welcome to Cart Max">
          <font>
             <Font name="Verdana Bold" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="260.0" layoutY="70.0" text="Game Set up" textAlignment="CENTER">
+      <Label layoutX="260.0" layoutY="58.0" text="Game Set up" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="260.0" layoutY="101.0" text="Player Name" />
-      <TextField layoutX="232.0" layoutY="130.0" />
+      <Label layoutX="121.0" layoutY="96.0" text="Player Name" />
+      <TextField fx:id="playerNameInput" layoutX="59.0" layoutY="123.0" />
+      <Label layoutX="318.0" layoutY="96.0" prefWidth="146.0" text="Select a Number of Rounds" />
+      <TextField fx:id="numberRoundsInput" layoutX="317.0" layoutY="123.0" />
+      <Label layoutX="242.0" layoutY="164.0" text="Select a Difficulty" textAlignment="CENTER" />
+      <Button fx:id="easyButton" layoutX="188.0" layoutY="195.0" mnemonicParsing="false" text="Easy" />
+      <Button fx:id="mediumButton" layoutX="253.0" layoutY="195.0" mnemonicParsing="false" text="Medium" />
+      <Button fx:id="hardButton" layoutX="340.0" layoutY="195.0" mnemonicParsing="false" text="Hard" />
+      <Label layoutX="208.0" layoutY="233.0" text="Select Three Starting Towers" />
+      <Button fx:id="WoodOneButton" layoutX="33.0" layoutY="233.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="137.0" text="Wood Tower 1.0" />
+      <Button fx:id="WoodTwoButton" layoutX="33.0" layoutY="340.0" mnemonicParsing="false" text="Wood Tower 2.0" />
+      <Button fx:id="StoneTwoButton" layoutX="401.0" layoutY="334.0" mnemonicParsing="false" text="Stone Tower 2.0" />
+      <Button fx:id="StoneOneButton" layoutX="401.0" layoutY="285.0" mnemonicParsing="false" text="Stone Tower 1.0" />
+      <Button fx:id="ClayOneButton" layoutX="236.0" layoutY="279.0" mnemonicParsing="false" text="Clay Tower 1.0" />
+      <Button fx:id="ClayTwoButton" layoutX="228.0" layoutY="334.0" mnemonicParsing="false" text="Clay Tower 2.0" />
+      <Button fx:id="continueButton" layoutX="494.0" layoutY="229.0" mnemonicParsing="false" text="Continue" />
+      <Button fx:id="resetTowersButton" layoutX="366.0" layoutY="229.0" mnemonicParsing="false" text="Reset Towers" />
    </children>
 </AnchorPane>

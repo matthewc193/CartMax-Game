@@ -21,12 +21,19 @@ public class GameEnvironment {
         this.currentRoundNumber = 0;
     }
     /**
-     * Basic getter methods
+     * Basic getter and setter methods
      */
     public Player getPlayer() {return player;}
+    public void setPlayer(Player player) {this.player = player;}
     public int getTotalRounds() {return totalRounds;}
+    public void setTotalRounds(int rounds){
+        this.totalRounds = rounds;
+    }
     public int getCurrentRoundNumber() {return currentRoundNumber;}
     public String getDifficulty() {return difficulty;}
+    public void setDifficulty(String difficulty){
+        this.difficulty = difficulty;
+    }
     /**
      * This method should start a new round
      * and increase currentRoundNumber by 1

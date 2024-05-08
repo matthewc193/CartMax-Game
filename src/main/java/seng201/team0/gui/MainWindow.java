@@ -19,6 +19,7 @@ public class MainWindow extends Application {
      * @param primaryStage The current fxml stage, handled by javaFX Application class
      * @throws IOException if there is an issue loading fxml file
      */
+    /**
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
@@ -32,6 +33,21 @@ public class MainWindow extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    */
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/setUpScreen.fxml"));
+        Parent root = baseLoader.load();
+
+        SetUpScreenController baseController = baseLoader.getController();
+        baseController.init(primaryStage);
+
+        primaryStage.setTitle("SENG201 Example App");
+        Scene scene = new Scene(root, 600, 400);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
 
     /**
      * Launches the FXML application, this must be called from another class (in this cass App.java) otherwise JavaFX
