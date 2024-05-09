@@ -33,7 +33,7 @@
       <Button fx:id="StoneOneButton" layoutX="401.0" layoutY="285.0" mnemonicParsing="false" text="Stone Tower 1.0" />
       <Button fx:id="ClayOneButton" layoutX="236.0" layoutY="279.0" mnemonicParsing="false" text="Clay Tower 1.0" />
       <Button fx:id="ClayTwoButton" layoutX="228.0" layoutY="334.0" mnemonicParsing="false" text="Clay Tower 2.0" />
-      <Button fx:id="continueButton" layoutX="494.0" layoutY="229.0" mnemonicParsing="false" text="Continue" />
+      <Button fx:id="continueButton" layoutX="521.0" layoutY="279.0" mnemonicParsing="false" text="Continue" />
       <Button fx:id="resetTowersButton" layoutX="366.0" layoutY="229.0" mnemonicParsing="false" text="Reset Towers" />
    </children>
 </AnchorPane>

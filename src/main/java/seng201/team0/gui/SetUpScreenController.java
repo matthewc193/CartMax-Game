@@ -24,17 +24,18 @@ public class SetUpScreenController {
      *
      * @param stage Top level container for this window
      */
+    private GameEnvironment gameEnvironment;
     public void init(Stage stage) {
         player = new Player();
     }
-    private GameEnvironment gameEnvironment;
+    public SetUpScreenController(){
 
-    /**
-     *Constructor method which initializes GameEnvironment Class
-     */
+    }
     public SetUpScreenController(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
     }
+
+
 
     /**
      * FXML import (buttons, test field etc.)
@@ -115,11 +116,9 @@ public class SetUpScreenController {
             towerButtons.get(i).setOnAction(event -> {
                 //selectedRocketIndex = finalI;
                 towerButtons.forEach(button -> {
-                    if (button == towerButtons.get(finalI)) {
+                    if (button == towerButtons.get(finalI) && player.getStartTowers().size() < 3) {
                         button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                         player.addTower(towerTypes.get(finalI));
-                    } else {
-                        button.setStyle("");
                     }
                 });
             });
@@ -133,9 +132,9 @@ public class SetUpScreenController {
      */
     public void onContinueClicked(){
         //should only allow if player name is between 3-15 alphabetical chars
-        //setup game environment class
+
         player.setName(playerNameInput.getText());
-        GameEnvironment gameEnvironment = new GameEnvironment(player, totalRounds, difficulty);
+        //GameEnvironment gameEnvironment = new GameEnvironment(player, totalRounds, difficulty);
 
         // Need to implement closesetupscreen
     }

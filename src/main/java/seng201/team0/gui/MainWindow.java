@@ -41,7 +41,7 @@ public class MainWindow extends Application {
         SetUpScreenController baseController = baseLoader.getController();
         baseController.init(primaryStage);
 
-        primaryStage.setTitle("SENG201 Example App");
+        primaryStage.setTitle("CartMax Set Up Screen");
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();

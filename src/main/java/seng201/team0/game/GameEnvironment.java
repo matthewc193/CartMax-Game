@@ -2,6 +2,9 @@ package seng201.team0.game;
 
 import seng201.team0.Player;
 
+import java.util.List;
+import java.util.function.Consumer;
+
 /**
  * This class should be instantiated add the beginning
  * of the game and acts as the overall manager for the game.
@@ -10,15 +13,21 @@ import seng201.team0.Player;
  * current round number
  */
 public class GameEnvironment {
+
+    private final Consumer<GameEnvironment> setupScreenLauncher;
+    private final Consumer<GameEnvironment> mainScreenLauncher;
+
+    private final Runnable clearScreen;
     Player player;
     int totalRounds;
     int currentRoundNumber;
     String difficulty;
-    public GameEnvironment(Player player, int totalRounds, String difficulty){
-        this.player = player;
-        this.totalRounds = totalRounds;
-        this.difficulty = difficulty;
-        this.currentRoundNumber = 0;
+
+    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Runnable clearScreen) {
+        this.setupScreenLauncher = setupScreenLauncher;
+        this.mainScreenLauncher = mainScreenLauncher;
+        this.clearScreen = clearScreen;
+        launchSetupScreen();
     }
     /**
      * Basic getter and setter methods
@@ -38,6 +47,15 @@ public class GameEnvironment {
      * This method should start a new round
      * and increase currentRoundNumber by 1
      */
+
+    public void launchSetupScreen() {
+        setupScreenLauncher.accept(this);
+    }
+
+    public void launchMainScreen() {
+        mainScreenLauncher.accept(this);
+    }
+
     public void startRound(){
         //To be implemented
     }
