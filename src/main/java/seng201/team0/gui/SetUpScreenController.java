@@ -1,7 +1,10 @@
 package seng201.team0.gui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import seng201.team0.Player;
@@ -33,6 +36,7 @@ public class SetUpScreenController {
     }
     public SetUpScreenController(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
+
     }
 
 
@@ -40,6 +44,8 @@ public class SetUpScreenController {
     /**
      * FXML import (buttons, test field etc.)
      */
+    @FXML
+    private Slider roundNumberSlider;
     @FXML
     public TextField playerNameInput;
     @FXML
@@ -69,9 +75,11 @@ public class SetUpScreenController {
      * when user clicks continue
      */
     private Player player;
-    private int totalRounds;
+    private int totalRounds = 0;
     private String difficulty;
     public void initialize(){
+
+        player = gameEnvironment.getPlayer();
 
         List<Button> towerButtons = List.of(WoodOneButton, WoodTwoButton, ClayOneButton, ClayTwoButton, StoneOneButton, StoneTwoButton);
         List<Tower> towerTypes = new ArrayList<>(Arrays.asList(new woodOne(), new woodTwo(), new clayOne(), new clayTwo(), new stoneOne(), new stoneTwo()));
@@ -81,6 +89,15 @@ public class SetUpScreenController {
             onContinueClicked();
         });
 
+        roundNumberSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                totalRounds = (int) roundNumberSlider.getValue();
+            }
+        });
+
+
+        //Clears setUpTowers and tower buttons
         resetTowersButton.setOnAction(event -> {
             player.resetTowers();
             for (int i = 0; i < towerButtons.size(); i++) {
@@ -132,9 +149,11 @@ public class SetUpScreenController {
      */
     public void onContinueClicked(){
         //should only allow if player name is between 3-15 alphabetical chars
-
-        player.setName(playerNameInput.getText());
-        //GameEnvironment gameEnvironment = new GameEnvironment(player, totalRounds, difficulty);
+        gameEnvironment.getPlayer().setName(playerNameInput.getText());
+        gameEnvironment.setTotalRounds(totalRounds);
+        gameEnvironment.setDifficulty(difficulty);
+        gameEnvironment.setTotalRounds(totalRounds);
+        gameEnvironment.closeSetupScreen();
 
         // Need to implement closesetupscreen
     }

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -35,5 +36,6 @@
       <Button fx:id="ClayTwoButton" layoutX="228.0" layoutY="334.0" mnemonicParsing="false" text="Clay Tower 2.0" />
       <Button fx:id="continueButton" layoutX="521.0" layoutY="279.0" mnemonicParsing="false" text="Continue" />
       <Button fx:id="resetTowersButton" layoutX="366.0" layoutY="229.0" mnemonicParsing="false" text="Reset Towers" />
+      <Slider fx:id="roundNumberSlider" blockIncrement="1.0" layoutX="33.0" layoutY="71.0" majorTickUnit="2.0" max="15.0" min="5.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
    </children>
 </AnchorPane>

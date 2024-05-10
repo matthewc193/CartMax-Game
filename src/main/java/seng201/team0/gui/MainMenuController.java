@@ -1,10 +1,13 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
+import javafx.scene.control.*;
 
-import java.awt.*;
+
+
 
 /**
  * Controller for the MainMenu Screen
@@ -19,7 +22,7 @@ public class MainMenuController {
     @FXML
     public Button changeInventoryButton;
     @FXML
-    public Button inventoryShopButton;
+    public Button shopButton;
     private Player player;
     private GameEnvironment gameEnvironment;
     public MainMenuController(GameEnvironment gameEnvironment){
@@ -27,8 +30,9 @@ public class MainMenuController {
     }
 
     public void initialize(){
-        playerNameLabel.setText(player.getName());
 
+        playerNameLabel.setText(gameEnvironment.getPlayer().getName());
+        roundsLabel.setText("Round " + gameEnvironment.getCurrentRoundNumber() + " of " + gameEnvironment.getTotalRounds());
     }
 
 

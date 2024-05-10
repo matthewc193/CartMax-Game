@@ -27,6 +27,8 @@ public class GameEnvironment {
         this.setupScreenLauncher = setupScreenLauncher;
         this.mainScreenLauncher = mainScreenLauncher;
         this.clearScreen = clearScreen;
+        this.player = new Player();
+        this.currentRoundNumber = 0;
         launchSetupScreen();
     }
     /**
@@ -51,7 +53,10 @@ public class GameEnvironment {
     public void launchSetupScreen() {
         setupScreenLauncher.accept(this);
     }
-
+    public void closeSetupScreen() {
+        clearScreen.run();
+        launchMainScreen();
+    }
     public void launchMainScreen() {
         mainScreenLauncher.accept(this);
     }

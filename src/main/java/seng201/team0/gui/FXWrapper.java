@@ -1,10 +1,12 @@
 package seng201.team0.gui;
 
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
 
 import java.io.IOException;
@@ -15,13 +17,14 @@ public class FXWrapper {
 
     private Stage stage;
 
+    Player player = new Player();
+
     public void init(Stage stage) {
         this.stage = stage;
         new GameEnvironment(this::launchSetupScreen, this::launchMainScreen, this::clearPane);
     }
 
     public void launchSetupScreen(GameEnvironment gameEnvironment) {
-        System.out.println("here");
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/setUpScreen.fxml"));
             // provide a custom Controller with parameters
@@ -40,7 +43,7 @@ public class FXWrapper {
 
     public void launchMainScreen(GameEnvironment gameEnvironment) {
         try {
-            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
+            FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));
             mainScreenLoader.setControllerFactory(param -> new MainMenuController(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             pane.getChildren().add(setupParent);
