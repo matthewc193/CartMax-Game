@@ -21,7 +21,7 @@ public class FXWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameEnvironment(this::launchSetupScreen, this::launchMainScreen, this::clearPane);
+        new GameEnvironment(this::launchSetupScreen, this::launchMainScreen, this::launchInGameScreen, this::clearPane);
     }
 
     public void launchSetupScreen(GameEnvironment gameEnvironment) {
@@ -47,10 +47,24 @@ public class FXWrapper {
             mainScreenLoader.setControllerFactory(param -> new MainMenuController(gameEnvironment));
             Parent setupParent  = mainScreenLoader.load();
             pane.getChildren().add(setupParent);
-            stage.setTitle("Rocket Manager Main Screen");
+            stage.setTitle("Main Menu");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void launchInGameScreen(GameEnvironment gameEnvironment) {
+        try {
+            FXMLLoader inGameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inGameScreen.fxml"));
+            inGameScreenLoader.setControllerFactory(param -> new InGameScreenController(gameEnvironment));
+            Parent setupParent  = inGameScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Game Play");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

@@ -24,8 +24,10 @@ public class FXWindow extends Application {
         Parent root = baseLoader.load();
         FXWrapper fxWrapper = baseLoader.getController();
         Scene scene = new Scene(root, 800, 600);
+
         primaryStage.setTitle("FX Wrapper");
         primaryStage.setScene(scene);
+
         primaryStage.show();
         fxWrapper.init(primaryStage);
     }

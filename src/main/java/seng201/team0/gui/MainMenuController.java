@@ -30,9 +30,18 @@ public class MainMenuController {
     }
 
     public void initialize(){
+        //Action for when continue button in clicked
+        nextRoundButton.setOnAction(event -> {
+            onNextRoundClicked();
+        });
 
         playerNameLabel.setText(gameEnvironment.getPlayer().getName());
         roundsLabel.setText("Round " + gameEnvironment.getCurrentRoundNumber() + " of " + gameEnvironment.getTotalRounds());
+    }
+
+    public void onNextRoundClicked(){
+        gameEnvironment.launchInGameScreen();
+
     }
 
 
