@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class Player {
     String name;
     double money;
-    ArrayList<Tower> startTowers;
+    ArrayList<Tower> towers;
     public Player(){
         this.name = null;
-        this.startTowers = new ArrayList<>();
+        this.towers = new ArrayList<>();
         this.money = 0;
     }
 
@@ -20,8 +20,8 @@ public class Player {
     public String getName() {
         return name;
     }
-    public ArrayList<Tower> getStartTowers() {
-        return startTowers;
+    public ArrayList<Tower> getTowers() {
+        return towers;
     }
     public double getMoney() {
         return money;
@@ -30,10 +30,10 @@ public class Player {
         this.name = name;
     }
     /**
-     * Add a tower to players startTowers
+     * Add a tower to players towers
      */
     public void addTower(Tower tower){
-        startTowers.add(tower);
+        towers.add(tower);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Player {
      * Used in the setupscreen
      */
     public void resetTowers(){
-        this.startTowers = new ArrayList<>();
+        this.towers = new ArrayList<>();
     }
 
     /**

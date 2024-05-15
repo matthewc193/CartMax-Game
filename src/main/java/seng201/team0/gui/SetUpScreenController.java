@@ -77,6 +77,8 @@ public class SetUpScreenController {
     public Button resetTowersButton;
     @FXML
     public Label playerNameWarning;
+    @FXML
+    public Label towerNumberWarning;
 
     /**
      * Temporary variables which are used to instantiate GameEnvironment Class
@@ -150,7 +152,7 @@ public class SetUpScreenController {
             towerButtons.get(i).setOnAction(event -> {
                 //selectedRocketIndex = finalI;
                 towerButtons.forEach(button -> {
-                    if (button == towerButtons.get(finalI) && player.getStartTowers().size() < 3) {
+                    if (button == towerButtons.get(finalI) && player.getTowers().size() < 3) {
                         button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                         player.addTower(towerTypes.get(finalI));
                     }
@@ -166,13 +168,19 @@ public class SetUpScreenController {
      */
     public void onContinueClicked(){
         //should only allow if player name is between 3-15 alphabetical chars
-        if(playerNameWarning.getText() == ""){
-            gameEnvironment.getPlayer().setName(playerNameInput.getText());
-            gameEnvironment.setTotalRounds(totalRounds);
-            gameEnvironment.setDifficulty(difficulty);
-            gameEnvironment.setTotalRounds(totalRounds);
-            gameEnvironment.closeSetupScreen();
+        if(gameEnvironment.getPlayer().getTowers().size() != 3){
+            towerNumberWarning.setStyle("-fx-text-fill: red;");
         }
+        else{
+            if(playerNameWarning.getText() == ""){
+                gameEnvironment.getPlayer().setName(playerNameInput.getText());
+                gameEnvironment.setTotalRounds(totalRounds);
+                gameEnvironment.setDifficulty(difficulty);
+                gameEnvironment.setTotalRounds(totalRounds);
+                gameEnvironment.closeSetupScreen();
+            }
+        }
+
     }
 
 }
