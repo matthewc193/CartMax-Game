@@ -17,7 +17,7 @@
       <Label fx:id="playerMoneyLabel" layoutX="56.0" layoutY="17.0" text="0" />
       <ImageView fitHeight="41.0" fitWidth="67.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../—Pngtree—glossy%20golden%20coin%20icon_5986301.png" />
+            <Image url="@../Img/coinIcon.png" />
          </image>
       </ImageView>
    </children>

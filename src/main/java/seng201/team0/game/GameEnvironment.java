@@ -1,5 +1,6 @@
 package seng201.team0.game;
 
+import javafx.scene.layout.Pane;
 import seng201.team0.Player;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class GameEnvironment {
     int totalRounds;
     int currentRoundNumber;
     String difficulty;
+    Pane pane;
 
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher, Consumer<GameEnvironment> inventoryScreenLauncher, Runnable clearScreen) {
         this.setupScreenLauncher = setupScreenLauncher;
@@ -64,6 +66,7 @@ public class GameEnvironment {
         launchMainScreen();
     }
     public void launchMainScreen() {
+        clearScreen.run();
         mainScreenLauncher.accept(this);
     }
     public void closeInventoryScreen() {

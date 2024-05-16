@@ -41,7 +41,13 @@ public class ShopScreenController {
     public Label displayReloadSpeed;
     @FXML
     public Label welcomeText;
+    @FXML
+    public Button backToMainMenuButton;
     public void initialize(){
+
+        backToMainMenuButton.setOnAction(actionEvent -> {
+            onBackToMainMenuButtonClicked();
+        });
 
         welcomeText.setText("Welcome to the Shop, " + player.getName() + "!");
 
@@ -99,5 +105,9 @@ public class ShopScreenController {
             }
         }
         return -1;
+    }
+
+    private void onBackToMainMenuButtonClicked() {
+        gameEnvironment.launchMainScreen();
     }
 }

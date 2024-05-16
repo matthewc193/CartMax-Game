@@ -22,6 +22,7 @@ public class MainMenuController {
     public Button changeInventoryButton;
     @FXML
     public Button shopButton;
+
     private Player player;
     private GameEnvironment gameEnvironment;
     public MainMenuController(GameEnvironment gameEnvironment){
@@ -38,7 +39,6 @@ public class MainMenuController {
         changeInventoryButton.setOnAction(actionEvent -> {
             onInventoryButtonClicked();
         });
-
 
         shopButton.setOnAction(actionEvent -> {
             onShopButtonClicked();

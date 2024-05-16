@@ -1,21 +1,19 @@
 package seng201.team0.gui;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
 
-import java.util.Objects;
+import java.util.List;
 
 
 public class InGameScreenController {
+
     @FXML
     public AnchorPane anchorPane;
     @FXML
@@ -25,11 +23,23 @@ public class InGameScreenController {
     @FXML
     public Button inventoryTowerThree;
 
-    public Image mineCart = new Image(getClass().getResourceAsStream("src/main/resources/Img/mineCart.png"));
+    @FXML
+    public ImageView mineCartImage1;
+    @FXML
+    public ImageView mineCartImage2;
+    @FXML
+    public ImageView mineCartImage3;
+    @FXML
+    public ImageView mineCartImage4;
+    @FXML
+    public ImageView mineCartImage5;
+
+    public Image mineCart;
     private Player player;
     private GameEnvironment gameEnvironment;
 
     public InGameScreenController(GameEnvironment gameEnvironment){
+        this.mineCart = new Image(getClass().getResourceAsStream("/Img/mineCart.png"));
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
     }
@@ -37,30 +47,32 @@ public class InGameScreenController {
 
 
     public void initialize(){
+        List<ImageView>  cartImageViews = List.of(mineCartImage1, mineCartImage2, mineCartImage3, mineCartImage4, mineCartImage5);
 
-        animateCart(mineCart);
-
-
-
+        for (int i = 0; i < cartImageViews.size();i++){
+            try {
+                // Sleep for 1 second (1000 milliseconds) between animations
+                TranslateTransition translate = animateCart(mineCart,cartImageViews.get(i));
+                Thread.sleep(1000);
+                translate.play();
+            } catch (InterruptedException e) {
+                // Handle the interruption appropriately
+                Thread.currentThread().interrupt();
+                System.out.println("Thread was interrupted, stopping animations");
+                break;
+            }
+        }
 
     }
 
 
-    private void animateCart(Image cartImage) {
-        ImageView cart = new ImageView(cartImage);
-        // Set the position of the cart
-        cart.setLayoutX(100); // Adjust the initial X position as needed
-        cart.setLayoutY(100); // Adjust the initial Y position as needed
-
-        // Add the cart to the scene
-        // Assuming you have a Pane or other layout container in your FXML file
-        // You should replace "yourPane" with the actual ID of your layout container
-        anchorPane.getChildren().add(cart);
+    public TranslateTransition animateCart(Image cartImage, ImageView imageView) {
+        imageView.setImage(cartImage);
         TranslateTransition translate = new TranslateTransition();
-        translate.setNode(cart);
+        translate.setNode(imageView);
         translate.setDuration(Duration.millis(10000)); // Adjust the duration as needed
-        translate.setByX(250); // Adjust the translation distance as needed
-        translate.play();
+        translate.setByX(600);
+        return translate;
     }
 
 }

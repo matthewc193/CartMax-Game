@@ -27,5 +27,6 @@
       <Label layoutX="422.0" layoutY="177.0" text="Reload Speed:" />
       <Label fx:id="displayResourceAmount" layoutX="535.0" layoutY="136.0" />
       <Label fx:id="displayReloadSpeed" layoutX="509.0" layoutY="177.0" />
+      <Button fx:id="backToMainMenuButton" layoutX="447.0" layoutY="304.0" mnemonicParsing="false" text="Back to Main Menu" />
    </children>
 </AnchorPane>
