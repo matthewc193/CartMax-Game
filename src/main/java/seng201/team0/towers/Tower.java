@@ -2,12 +2,15 @@ package seng201.team0.towers;
 
 import seng201.team0.Player;
 
+import java.util.ArrayList;
+
 public abstract class Tower {
     int resourceAmount;
     double reloadSpeed;
     String resourceType;
     double cost;
-
+    String towerName;
+    boolean isSelected;
     /**
      * Basic Getter methods
      */
@@ -15,6 +18,12 @@ public abstract class Tower {
     public double getReloadSpeed() {return reloadSpeed;}
     public String getResourceType() {return resourceType;}
     public double getCost() {return cost;}
+    public String getTowerName() {return towerName;}
+    public boolean getIsSelected() {return isSelected;}
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
 
     /**
      * If player has enough money to upgrade the resourceAmount
@@ -51,5 +60,4 @@ public abstract class Tower {
             return false;
         }
     }
-
 }

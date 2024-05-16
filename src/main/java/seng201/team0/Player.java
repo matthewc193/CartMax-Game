@@ -36,6 +36,10 @@ public class Player {
         startTowers.add(tower);
     }
 
+    public void removeTower(Tower tower) {
+        startTowers.remove(tower);
+    }
+
     /**
      * Empties this towers from the players arraylist
      * Used in the setupscreen
@@ -54,7 +58,4 @@ public class Player {
         this.money += amount;
     }
 
-    public void buyTower() {
-
-    }
 }

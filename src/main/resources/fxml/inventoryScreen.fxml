@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.InventoryScreenController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0">
@@ -29,22 +28,22 @@
             <RowConstraints minHeight="10.0" percentHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Inventory" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label fx:id="inventoryLabel" text="Inventory" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 4" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 5" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 4" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 5" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Label text="Reserved towers:" GridPane.columnSpan="5" GridPane.rowIndex="3">
+            <Button fx:id="selectedTower1Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="selectedTower2Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="selectedTower3Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="selectedTower4Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 4" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="selectedTower5Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 5" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="reservedTower1Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="reservedTower2Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="reservedTower3Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="reservedTower4Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 4" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="reservedTower5Button" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" text="Tower 5" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Label fx:id="reservedTowersLabel" text="Reserved towers:" GridPane.columnSpan="5" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
@@ -52,7 +51,7 @@
                   <Insets left="5.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Selected towers:" GridPane.columnSpan="5" GridPane.rowIndex="1">
+            <Label fx:id="selectedTowersLabel" text="Selected towers:" GridPane.columnSpan="5" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
@@ -60,7 +59,7 @@
                   <Insets left="5.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Tower Stats:" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <Label fx:id="towerStatsLabel" text="Tower Stats:" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
@@ -78,36 +77,50 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Resource amount:">
+                  <Label fx:id="resourceAmountLabel" text="Resource amount:">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Reload speed:" GridPane.rowIndex="1">
+                  <Label fx:id="reloadSpeedLabel" text="Reload speed:" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Resource type:" GridPane.rowIndex="2">
+                  <Label fx:id="resourceTypeLabel" text="Resource type:" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Level:" GridPane.rowIndex="3">
+                  <Label fx:id="levelLabel" text="Level:" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Cost:" GridPane.rowIndex="4">
+                  <Label fx:id="costLabel" text="Cost:" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Label>
+                  <GridPane GridPane.rowIndex="5">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="selectButton" mnemonicParsing="false" text="Select" GridPane.halignment="CENTER" />
+                        <Button fx:id="reserveButton" mnemonicParsing="false" text="Reserve" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                     </children>
+                  </GridPane>
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" text="Confirm" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#onConfirmClicked" prefHeight="35.0" prefWidth="140.0" text="Confirm" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

@@ -60,12 +60,21 @@ public class GameEnvironment {
     public void launchMainScreen() {
         mainScreenLauncher.accept(this);
     }
+    public void closeInventoryScreen() {
+        clearScreen.run();
+        launchMainScreen();
+    }
+
+    public void closeShopScreen() {
+        clearScreen.run();
+        launchMainScreen();
+    }
 
     public void startRound(){
         //To be implemented
     }
     public void quitGame(){
-        //To be implemented
+        //To be implemented   
     }
 
 }
