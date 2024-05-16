@@ -4,8 +4,8 @@ public class stoneOne extends Tower {
     public stoneOne(){
         this.resourceType = "Stone";
         this.cost = 120;
-        this.reloadSpeed = 2.0;
-        this.resourceAmount = 8;
+        this.reloadSpeed = 3.0;
+        this.resourceAmount = 10;
     }
 
 

@@ -4,7 +4,7 @@ public class clayTwo extends Tower {
     public clayTwo(){
         this.resourceType = "Clay";
         this.cost = 250;
-        this.reloadSpeed = 1.7;
+        this.reloadSpeed = 2.5;
         this.resourceAmount = 10;
     }
 }

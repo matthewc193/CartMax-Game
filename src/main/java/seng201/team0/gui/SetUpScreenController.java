@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
@@ -17,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.awt.*;
+import javafx.scene.control.Tooltip;
+import javafx.util.StringConverter;
+import javafx.util.converter.DefaultStringConverter;
+import javafx.scene.control.TextFormatter;
 
 /**
  * Controller for setUpScreen.fxml
@@ -70,12 +75,17 @@ public class SetUpScreenController {
     public Button continueButton;
     @FXML
     public Button resetTowersButton;
+    @FXML
+    public Label playerNameWarning;
+    @FXML
+    public Label towerNumberWarning;
+
     /**
      * Temporary variables which are used to instantiate GameEnvironment Class
      * when user clicks continue
      */
     private Player player;
-    private int totalRounds = 0;
+    private int totalRounds = 5;
     private String difficulty;
     public void initialize(){
 
@@ -96,6 +106,15 @@ public class SetUpScreenController {
             }
         });
 
+        // Displays a warning message if name is not 3-15 chars or not alphanumeric
+        playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() < 3 || newValue.length() > 15 || !newValue.matches("[a-zA-Z0-9]*")) {
+                playerNameWarning.setText("Name must be 3-15 alphanumeric characters!");
+                playerNameWarning.setStyle("-fx-text-fill: red;");
+            } else {
+                playerNameWarning.setText("");
+            }
+        });
 
         //Clears setUpTowers and tower buttons
         resetTowersButton.setOnAction(event -> {
@@ -133,7 +152,7 @@ public class SetUpScreenController {
             towerButtons.get(i).setOnAction(event -> {
                 //selectedRocketIndex = finalI;
                 towerButtons.forEach(button -> {
-                    if (button == towerButtons.get(finalI) && player.getStartTowers().size() < 3) {
+                    if (button == towerButtons.get(finalI) && player.getTowers().size() < 3) {
                         button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
                         player.addTower(towerTypes.get(finalI));
                     }
@@ -149,13 +168,19 @@ public class SetUpScreenController {
      */
     public void onContinueClicked(){
         //should only allow if player name is between 3-15 alphabetical chars
-        gameEnvironment.getPlayer().setName(playerNameInput.getText());
-        gameEnvironment.setTotalRounds(totalRounds);
-        gameEnvironment.setDifficulty(difficulty);
-        gameEnvironment.setTotalRounds(totalRounds);
-        gameEnvironment.closeSetupScreen();
+        if(gameEnvironment.getPlayer().getTowers().size() != 3){
+            towerNumberWarning.setStyle("-fx-text-fill: red;");
+        }
+        else{
+            if(playerNameWarning.getText() == ""){
+                gameEnvironment.getPlayer().setName(playerNameInput.getText());
+                gameEnvironment.setTotalRounds(totalRounds);
+                gameEnvironment.setDifficulty(difficulty);
+                gameEnvironment.setTotalRounds(totalRounds);
+                gameEnvironment.closeSetupScreen();
+            }
+        }
 
-        // Need to implement closesetupscreen
     }
 
 }
