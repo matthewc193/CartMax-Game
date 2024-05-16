@@ -7,6 +7,7 @@ public class woodOne extends Tower {
         this.cost = 100;
         this.reloadSpeed = 2.0;
         this.resourceAmount = 20;
+        this.towerName = "Wood 1";
     }
 
 }

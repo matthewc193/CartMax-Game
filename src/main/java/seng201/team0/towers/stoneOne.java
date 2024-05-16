@@ -6,6 +6,7 @@ public class stoneOne extends Tower {
         this.cost = 120;
         this.reloadSpeed = 3.0;
         this.resourceAmount = 10;
+        this.towerName = "Stone 1";
     }
 
 

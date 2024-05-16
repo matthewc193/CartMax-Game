@@ -68,21 +68,21 @@ public class InventoryScreenController {
     public void initialize() {
         displayTowers();
 
-        selectedTower1Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(0)));
-        selectedTower2Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(1)));
-        selectedTower3Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(2)));
-        selectedTower4Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(3)));
-        selectedTower5Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(4)));
-        reservedTower1Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(5)));
-        reservedTower2Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(6)));
-        reservedTower3Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(7)));
-        reservedTower4Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(8)));
-        reservedTower5Button.setOnAction(event -> displayTowerStats(player.getStartTowers().get(9)));
+        selectedTower1Button.setOnAction(event -> displayTowerStats(player.getTowers().get(0)));
+        selectedTower2Button.setOnAction(event -> displayTowerStats(player.getTowers().get(1)));
+        selectedTower3Button.setOnAction(event -> displayTowerStats(player.getTowers().get(2)));
+        selectedTower4Button.setOnAction(event -> displayTowerStats(player.getTowers().get(3)));
+        selectedTower5Button.setOnAction(event -> displayTowerStats(player.getTowers().get(4)));
+        reservedTower1Button.setOnAction(event -> displayTowerStats(player.getTowers().get(5)));
+        reservedTower2Button.setOnAction(event -> displayTowerStats(player.getTowers().get(6)));
+        reservedTower3Button.setOnAction(event -> displayTowerStats(player.getTowers().get(7)));
+        reservedTower4Button.setOnAction(event -> displayTowerStats(player.getTowers().get(8)));
+        reservedTower5Button.setOnAction(event -> displayTowerStats(player.getTowers().get(9)));
 
         selectButton.setOnAction(event -> {
             if (currentTower != null && !currentTower.getIsSelected()) {
                 int count = 0;
-                for (Tower tower : player.getStartTowers()) {
+                for (Tower tower : player.getTowers()) {
                     if (tower.getIsSelected()) {
                         count++;
                     }
@@ -99,7 +99,7 @@ public class InventoryScreenController {
         reserveButton.setOnAction(event -> {
             if (currentTower != null && currentTower.getIsSelected()) {
                 int count = 0;
-                for (Tower tower : player.getStartTowers()) {
+                for (Tower tower : player.getTowers()) {
                     if (!tower.getIsSelected()) {
                         count++;
                     }
@@ -122,7 +122,7 @@ public class InventoryScreenController {
     }
 
     private void displayTowers() {
-        ArrayList<Tower> ownedTowers = player.getStartTowers();
+        ArrayList<Tower> ownedTowers = player.getTowers();
         for (int i = 0; i < ownedTowers.size(); i++) {
             Tower tower = ownedTowers.get(i);
             Button towerButton;
@@ -188,7 +188,7 @@ public class InventoryScreenController {
     }
 
     private void setCurrentTower(int index) {
-        ArrayList<Tower> ownedTowers = player.getStartTowers();
+        ArrayList<Tower> ownedTowers = player.getTowers();
         if (index >= 0 && index < ownedTowers.size()) {
             currentTower = ownedTowers.get(index);
             displayTowerStats(currentTower);

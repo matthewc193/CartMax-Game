@@ -37,7 +37,7 @@ public class Player {
     }
 
     public void removeTower(Tower tower) {
-        startTowers.remove(tower);
+        towers.remove(tower);
     }
 
     /**
