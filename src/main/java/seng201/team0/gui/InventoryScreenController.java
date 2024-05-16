@@ -61,8 +61,9 @@ public class InventoryScreenController {
     private Tower currentTower;
     private GameEnvironment gameEnvironment;
 
-    public InventoryScreenController(Player player) {
-        this.player = player;
+    public InventoryScreenController(GameEnvironment gameEnvironment) {
+        this.gameEnvironment = gameEnvironment;
+        this.player = gameEnvironment.getPlayer();
     }
 
     public void initialize() {

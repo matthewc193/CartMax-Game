@@ -35,6 +35,9 @@ public class MainMenuController {
             onNextRoundClicked();
         });
 
+        changeInventoryButton.setOnAction(actionEvent -> {
+            onInventoryButtonClicked();
+        });
 
 
         shopButton.setOnAction(actionEvent -> {
@@ -43,6 +46,10 @@ public class MainMenuController {
 
         playerNameLabel.setText(gameEnvironment.getPlayer().getName());
         roundsLabel.setText("Round " + gameEnvironment.getCurrentRoundNumber() + " of " + gameEnvironment.getTotalRounds());
+    }
+
+    private void onInventoryButtonClicked() {
+        gameEnvironment.launchInventoryScreen();
     }
 
     private void onShopButtonClicked() {
