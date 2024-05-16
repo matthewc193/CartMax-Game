@@ -66,8 +66,9 @@ public class ShopScreenController {
             int finalI = i;
             towerShopButtons.get(i).setOnAction(event -> {
                 if (containsInstanceOfClass(this.player.getTowers(), towerTypes.get(finalI).getClass())){
-                    displayResourceAmount.setText(String.valueOf(player.getTowers().get(finalI).getResourceAmount()));
-                    displayReloadSpeed.setText(String.valueOf(player.getTowers().get(finalI).getReloadSpeed()));
+                    int towersIndx = findInstanceIndex(player.getTowers(), towerTypes.get(finalI).getClass());
+                    displayResourceAmount.setText(String.valueOf(player.getTowers().get(towersIndx).getResourceAmount()));
+                    displayReloadSpeed.setText(String.valueOf(player.getTowers().get(towersIndx).getReloadSpeed()));
                 }
                 else{
                     displayResourceAmount.setText(String.valueOf(towerTypes.get(finalI).getResourceAmount()));
@@ -79,12 +80,8 @@ public class ShopScreenController {
                         towerShopButtons.get(j).setStyle("");
                     }
                 }
-
-
             });
-
         }
-
     }
 
     public static boolean containsInstanceOfClass(ArrayList<Tower> list, Class<?> clazz) {
@@ -94,5 +91,13 @@ public class ShopScreenController {
             }
         }
         return false;
+    }
+    public int findInstanceIndex(List<?> list, Class<?> clazz) {
+        for (int i = 0; i < list.size(); i++) {
+            if (clazz.isInstance(list.get(i))) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

@@ -35,6 +35,8 @@ public class MainMenuController {
             onNextRoundClicked();
         });
 
+
+
         shopButton.setOnAction(actionEvent -> {
             onShopButtonClicked();
         });

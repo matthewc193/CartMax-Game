@@ -150,7 +150,7 @@ public class SetUpScreenController {
         for (int i = 0; i < towerButtons.size(); i++) {
             int finalI = i; // variables used within lambdas must be final
             towerButtons.get(i).setOnAction(event -> {
-                //selectedRocketIndex = finalI;
+
                 towerButtons.forEach(button -> {
                     if (button == towerButtons.get(finalI) && player.getTowers().size() < 3) {
                         button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
