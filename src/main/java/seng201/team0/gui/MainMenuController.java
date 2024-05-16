@@ -35,8 +35,16 @@ public class MainMenuController {
             onNextRoundClicked();
         });
 
+        shopButton.setOnAction(actionEvent -> {
+            onShopButtonClicked();
+        });
+
         playerNameLabel.setText(gameEnvironment.getPlayer().getName());
         roundsLabel.setText("Round " + gameEnvironment.getCurrentRoundNumber() + " of " + gameEnvironment.getTotalRounds());
+    }
+
+    private void onShopButtonClicked() {
+        gameEnvironment.launchShopScreen();
     }
 
     public void onNextRoundClicked(){

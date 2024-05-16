@@ -17,6 +17,7 @@ public class GameEnvironment {
     private final Consumer<GameEnvironment> setupScreenLauncher;
     private final Consumer<GameEnvironment> mainScreenLauncher;
     private final Consumer<GameEnvironment> inGameLauncher;
+    private final Consumer<GameEnvironment> shopScreenLauncher;
 
     private final Runnable clearScreen;
     Player player;
@@ -24,10 +25,11 @@ public class GameEnvironment {
     int currentRoundNumber;
     String difficulty;
 
-    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Runnable clearScreen) {
+    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher, Runnable clearScreen) {
         this.setupScreenLauncher = setupScreenLauncher;
         this.mainScreenLauncher = mainScreenLauncher;
         this.inGameLauncher = inGameScreenLauncher;
+        this.shopScreenLauncher = shopScreenLauncher;
         this.clearScreen = clearScreen;
         this.player = new Player();
         this.currentRoundNumber = 0;
@@ -66,6 +68,11 @@ public class GameEnvironment {
     public void launchInGameScreen(){
         clearScreen.run();
         inGameLauncher.accept(this);
+    }
+
+    public void launchShopScreen(){
+        clearScreen.run();
+        shopScreenLauncher.accept(this);
     }
 
     public void startRound(){

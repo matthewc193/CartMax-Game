@@ -36,7 +36,7 @@
       <Button fx:id="continueButton" layoutX="516.0" layoutY="330.0" mnemonicParsing="false" text="Continue" />
       <Button fx:id="resetTowersButton" layoutX="505.0" layoutY="242.0" mnemonicParsing="false" text="Reset Towers" />
       <Slider fx:id="roundNumberSlider" blockIncrement="1.0" layoutX="360.0" layoutY="101.0" majorTickUnit="2.0" max="15.0" min="5.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
-      <Label fx:id="playerNameWarning" layoutX="47.0" layoutY="120.0" prefHeight="53.0" prefWidth="169.0" textFill="#ff4545" wrapText="true" />
+      <Label fx:id="playerNameWarning" layoutX="47.0" layoutY="120.0" prefHeight="53.0" prefWidth="140.0" textFill="#ff4545" wrapText="true" />
       <Label layoutX="192.0" layoutY="192.0" text="(Hint you will need all 3 materials!)" />
    </children>
 </AnchorPane>
