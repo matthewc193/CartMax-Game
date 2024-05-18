@@ -51,28 +51,27 @@ public class InventoryScreenController {
     private Button selectButton;
     @FXML
     private Button reserveButton;
-    @FXML
-    private Button closeButton;
 
     private final GameEnvironment gameEnvironment;
-    public Player player;
+    private final Player player;
     private Tower currentTower;
-    private final List<Button> towerButtons;
-    private final List<Label> towerStatusLabels;
+    private List<Button> towerButtons;
+    private List<Label> towerStatusLabels;
 
     public InventoryScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
-        this.towerButtons = Arrays.asList(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button, tower6Button);
-        this.towerStatusLabels = Arrays.asList(tower1StatusLabel, tower2StatusLabel, tower3StatusLabel, tower4StatusLabel, tower5StatusLabel, tower6StatusLabel);
     }
 
+    @FXML
     public void initialize() {
+        towerButtons = Arrays.asList(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button, tower6Button);
+        towerStatusLabels = Arrays.asList(tower1StatusLabel, tower2StatusLabel, tower3StatusLabel, tower4StatusLabel, tower5StatusLabel, tower6StatusLabel);
         displayTowers();
         for (int i = 0; i < player.getTowers().size(); i++) {
-            final int index = i;
-            towerButtons.get(index).setOnAction(event -> {
-                displayTowerStats(player.getTowers().get(index));
+            int finalI = i;
+            towerButtons.get(i).setOnAction(event -> {
+                displayTowerStats(player.getTowers().get(finalI));
             });
         }
         selectButton.setOnAction(event -> selectTower());
@@ -111,7 +110,7 @@ public class InventoryScreenController {
                 }
             }
             if (count < 5) {
-                currentTower.setStatus("selected");;
+                currentTower.setStatus("selected");
                 displayTowers();
             } else {
                 showAlert("You can't select more than 5 towers at once.");
