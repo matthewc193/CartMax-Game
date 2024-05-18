@@ -10,7 +10,8 @@ public abstract class Tower {
     String resourceType;
     double cost;
     String towerName;
-    boolean isSelected;
+    String status;
+
     /**
      * Basic Getter methods
      */
@@ -19,10 +20,10 @@ public abstract class Tower {
     public String getResourceType() {return resourceType;}
     public double getCost() {return cost;}
     public String getTowerName() {return towerName;}
-    public boolean getIsSelected() {return isSelected;}
+    public String getStatus() {return status;}
 
-    public void setIsSelected(boolean isSelected) {
-        this.isSelected = isSelected;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /**

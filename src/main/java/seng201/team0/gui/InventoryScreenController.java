@@ -8,40 +8,37 @@ import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
 import seng201.team0.towers.Tower;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class InventoryScreenController {
     /**
      * FXML imports
      */
     @FXML
-    private Label inventoryLabel;
+    private Button tower1Button;
     @FXML
-    private Label selectedTowersLabel;
+    private Button tower2Button;
     @FXML
-    private Button selectedTower1Button;
+    private Button tower3Button;
     @FXML
-    private Button selectedTower2Button;
+    private Button tower4Button;
     @FXML
-    private Button selectedTower3Button;
+    private Button tower5Button;
     @FXML
-    private Button selectedTower4Button;
+    private Button tower6Button;
     @FXML
-    private Button selectedTower5Button;
+    private Label tower1StatusLabel;
     @FXML
-    private Label reservedTowersLabel;
+    private Label tower2StatusLabel;
     @FXML
-    private Button reservedTower1Button;
+    private Label tower3StatusLabel;
     @FXML
-    private Button reservedTower2Button;
+    private Label tower4StatusLabel;
     @FXML
-    private Button reservedTower3Button;
+    private Label tower5StatusLabel;
     @FXML
-    private Button reservedTower4Button;
-    @FXML
-    private Button reservedTower5Button;
-    @FXML
-    private Label towerStatsLabel;
+    private Label tower6StatusLabel;
     @FXML
     private Label resourceAmountLabel;
     @FXML
@@ -55,144 +52,87 @@ public class InventoryScreenController {
     @FXML
     private Button reserveButton;
     @FXML
-    private Button confirmButton;
+    private Button closeButton;
 
+    private final GameEnvironment gameEnvironment;
     public Player player;
     private Tower currentTower;
-    private GameEnvironment gameEnvironment;
+    private final List<Button> towerButtons;
+    private final List<Label> towerStatusLabels;
 
     public InventoryScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
+        this.towerButtons = Arrays.asList(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button, tower6Button);
+        this.towerStatusLabels = Arrays.asList(tower1StatusLabel, tower2StatusLabel, tower3StatusLabel, tower4StatusLabel, tower5StatusLabel, tower6StatusLabel);
     }
 
     public void initialize() {
         displayTowers();
-
-        selectedTower1Button.setOnAction(event -> displayTowerStats(player.getTowers().get(0)));
-        selectedTower2Button.setOnAction(event -> displayTowerStats(player.getTowers().get(1)));
-        selectedTower3Button.setOnAction(event -> displayTowerStats(player.getTowers().get(2)));
-        selectedTower4Button.setOnAction(event -> displayTowerStats(player.getTowers().get(3)));
-        selectedTower5Button.setOnAction(event -> displayTowerStats(player.getTowers().get(4)));
-        reservedTower1Button.setOnAction(event -> displayTowerStats(player.getTowers().get(5)));
-        reservedTower2Button.setOnAction(event -> displayTowerStats(player.getTowers().get(6)));
-        reservedTower3Button.setOnAction(event -> displayTowerStats(player.getTowers().get(7)));
-        reservedTower4Button.setOnAction(event -> displayTowerStats(player.getTowers().get(8)));
-        reservedTower5Button.setOnAction(event -> displayTowerStats(player.getTowers().get(9)));
-
-        selectButton.setOnAction(event -> {
-            if (currentTower != null && !currentTower.getIsSelected()) {
-                int count = 0;
-                for (Tower tower : player.getTowers()) {
-                    if (tower.getIsSelected()) {
-                        count++;
-                    }
-                }
-                if (count < 5) {
-                    currentTower.setIsSelected(true);;
-                    displayTowers();
-                } else {
-                    showAlert("You can't select more than 5 towers at once.");
-                }
-            }
-        });
-
-        reserveButton.setOnAction(event -> {
-            if (currentTower != null && currentTower.getIsSelected()) {
-                int count = 0;
-                for (Tower tower : player.getTowers()) {
-                    if (!tower.getIsSelected()) {
-                        count++;
-                    }
-                }
-                if (count < 5) {
-                    currentTower.setIsSelected(false);
-                    displayTowers();
-                } else {
-                    showAlert("You can't reserve more than 5 towers at once.");
-                }
-            }
-        });
-    }
-
-    private void displayTowerStats(Tower tower) {
-        resourceAmountLabel.setText("Resource amount: " + tower.getResourceAmount());
-        reloadSpeedLabel.setText("Reload speed: " + tower.getReloadSpeed());
-        resourceTypeLabel.setText("Resource type: " + tower.getResourceType());
-        costLabel.setText("Cost: " + tower.getCost());
+        for (int i = 0; i < player.getTowers().size(); i++) {
+            final int index = i;
+            towerButtons.get(index).setOnAction(event -> {
+                displayTowerStats(player.getTowers().get(index));
+            });
+        }
+        selectButton.setOnAction(event -> selectTower());
+        reserveButton.setOnAction(event -> reserveTower());
     }
 
     private void displayTowers() {
-        ArrayList<Tower> ownedTowers = player.getTowers();
-        for (int i = 0; i < ownedTowers.size(); i++) {
-            Tower tower = ownedTowers.get(i);
-            Button towerButton;
-            if (i < 5) {
-                switch (i) {
-                    case 0:
-                        towerButton = selectedTower1Button;
-                        break;
-                    case 1:
-                        towerButton = selectedTower2Button;
-                        break;
-                    case 2:
-                        towerButton = selectedTower3Button;
-                        break;
-                    case 3:
-                        towerButton = selectedTower4Button;
-                        break;
-                    case 4:
-                        towerButton = selectedTower5Button;
-                        break;
-                    default:
-                        continue;
-                }
+        List<Tower> towers = player.getTowers();
+        for (int i = 0; i < towerButtons.size(); i++) {
+            if (i < towers.size()) {
+                Tower tower = towers.get(i);
+                towerButtons.get(i).setText(tower.getTowerName());
+                towerStatusLabels.get(i).setText(tower.getStatus());
             } else {
-                switch (i - 5) {
-                    case 0:
-                        towerButton = reservedTower1Button;
-                        break;
-                    case 1:
-                        towerButton = reservedTower2Button;
-                        break;
-                    case 2:
-                        towerButton = reservedTower3Button;
-                        break;
-                    case 3:
-                        towerButton = reservedTower4Button;
-                        break;
-                    case 4:
-                        towerButton = reservedTower5Button;
-                        break;
-                    default:
-                        continue;
-                }
-            }
-            if (i < ownedTowers.size()) {
-                towerButton.setText(tower.getTowerName());
-                towerButton.setDisable(false);
-            } else {
-                towerButton.setText("");
-                towerButton.setDisable(true);
+                towerButtons.get(i).setText("");
+                towerStatusLabels.get(i).setText("");
+                towerButtons.get(i).setDisable(true);
             }
         }
-        selectedTower1Button.setOnAction(event -> setCurrentTower(0));
-        selectedTower2Button.setOnAction(event -> setCurrentTower(1));
-        selectedTower3Button.setOnAction(event -> setCurrentTower(2));
-        selectedTower4Button.setOnAction(event -> setCurrentTower(3));
-        selectedTower5Button.setOnAction(event -> setCurrentTower(4));
-        reservedTower1Button.setOnAction(event -> setCurrentTower(5));
-        reservedTower2Button.setOnAction(event -> setCurrentTower(6));
-        reservedTower3Button.setOnAction(event -> setCurrentTower(7));
-        reservedTower4Button.setOnAction(event -> setCurrentTower(8));
-        reservedTower5Button.setOnAction(event -> setCurrentTower(9));
     }
 
-    private void setCurrentTower(int index) {
-        ArrayList<Tower> ownedTowers = player.getTowers();
-        if (index >= 0 && index < ownedTowers.size()) {
-            currentTower = ownedTowers.get(index);
-            displayTowerStats(currentTower);
+    private void displayTowerStats(Tower tower) {
+        currentTower = tower;
+        resourceAmountLabel.setText("Resource amount:\n" + tower.getResourceAmount());
+        reloadSpeedLabel.setText("Reload speed:\n" + tower.getReloadSpeed());
+        resourceTypeLabel.setText("Resource type:\n" + tower.getResourceType());
+        costLabel.setText("Cost:\n" + tower.getCost());
+    }
+
+    private void selectTower() {
+        if (currentTower != null && currentTower.getStatus().equals("reserved")) {
+            int count = 0;
+            for (Tower tower : player.getTowers()) {
+                if (tower.getStatus().equals("selected")) {
+                    count++;
+                }
+            }
+            if (count < 5) {
+                currentTower.setStatus("selected");;
+                displayTowers();
+            } else {
+                showAlert("You can't select more than 5 towers at once.");
+            }
+        }
+    }
+
+    private void reserveTower() {
+        if (currentTower != null && currentTower.getStatus().equals("selected")) {
+            int count = 0;
+            for (Tower tower : player.getTowers()) {
+                if (tower.getStatus().equals("reserved")) {
+                    count++;
+                }
+            }
+            if (count < 5) {
+                currentTower.setStatus("reserved");
+                displayTowers();
+            } else {
+                showAlert("You can't reserve more than 5 towers at once.");
+            }
         }
     }
 
@@ -205,7 +145,7 @@ public class InventoryScreenController {
     }
 
     @FXML
-    private void onConfirmClicked() {
+    private void onCloseClicked() {
         gameEnvironment.closeInventoryScreen();
     }
 }

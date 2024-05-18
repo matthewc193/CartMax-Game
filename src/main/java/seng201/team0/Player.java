@@ -33,6 +33,7 @@ public class Player {
      * Add a tower to players towers
      */
     public void addTower(Tower tower){
+        setLatestTowerStatus(tower);
         towers.add(tower);
     }
 
@@ -58,4 +59,17 @@ public class Player {
         this.money += amount;
     }
 
+    private void setLatestTowerStatus(Tower latestTower) {
+        int count = 0;
+        for (Tower tower : towers) {
+            if (tower.getStatus() == "selected") {
+                count++;
+            }
+        }
+        if (count < 5) {
+            latestTower.setStatus("selected");
+        } else {
+            latestTower.setStatus("reserved");
+        }
+    }
 }
