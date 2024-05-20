@@ -15,9 +15,13 @@ import seng201.team0.game.GameEnvironment;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Controller for the inGameScreen.fxml. Handles the Cart animations
+ * and allows user to shoot resources at cart.
+ */
 public class InGameScreenController {
 
+    //FXML injections
     @FXML
     public AnchorPane anchorPane;
     @FXML
@@ -43,11 +47,18 @@ public class InGameScreenController {
     private Player player;
     private GameEnvironment gameEnvironment;
 
+    /**
+     * Constructor method, accesses required images
+     * and set the gameEnvironment and
+     * player variables.
+     * @param gameEnvironment
+     */
     public InGameScreenController(GameEnvironment gameEnvironment){
         this.mineCart = new Image(getClass().getResourceAsStream("/Img/mineCart.png"));
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
     }
+
 
     public void initialize(){
         cartImageViews = new ArrayList<>();
@@ -59,40 +70,29 @@ public class InGameScreenController {
 
         CartsThreads cartsThreads = new CartsThreads(this);
         cartsThreads.start();
-
-
     }
 
     public Image getMineCart(){
         return mineCart;
     }
 
+    /**
+     * Returns a list of FXML imageView injections.
+     */
     public List getCartImageViews(){
         return this.cartImageViews;
     }
 
-//    public TranslateTransition animateCart(Image cartImage, ImageView imageView) {
-//        imageView.setImage(cartImage);
-//        imageView.setFitHeight(90);
-//        imageView.setFitWidth(90);
-//        imageView.setPreserveRatio(true);
-//        TranslateTransition translate = new TranslateTransition();
-//        translate.setNode(imageView);
-//        translate.setDuration(Duration.millis(10000));// Adjust the duration as needed
-//        for(int i = 0; i < 4; i++){
-//            if ( i % 2 == 0){
-//                translate.setByX(100);
-//            }
-//            else{
-//                translate.setByY(100);
-//            }
-//            //translate.setByX(600);
-//        }
-//        return translate;
-//    }
-
-
-    public SequentialTransition animateCart2222(Image cartImage, ImageView imageView) {
+    /**
+     * Animate cart method handle the animation of an individual cart.
+     * Creates a zigzag of the cart through the screen. Duration can be
+     * changed based on difficulty.
+     * @param cartImage
+     * @param imageView
+     * @return SequentialTransition
+     */
+    public SequentialTransition animateCart(Image cartImage, ImageView imageView) {
+        // Setting imageView and imageView size
         imageView.setImage(cartImage);
         imageView.setFitHeight(90);
         imageView.setFitWidth(90);
@@ -101,16 +101,20 @@ public class InGameScreenController {
         // Create a sequential transition
         int rotationAngle = -90;
         SequentialTransition sequentialTransition = new SequentialTransition();
-        boolean direction = true;
+        boolean direction = true; // Determines if cart goes up or down Y axis
         for (int i = 0; i < 8; i++) {
             TranslateTransition translate = new TranslateTransition(Duration.millis(1000), imageView);
-            RotateTransition rotate = new RotateTransition(Duration.millis(500), imageView);
+            RotateTransition rotate = new RotateTransition(Duration.millis(500), imageView); // Creating a Rotate Transition
+
+            // Set the correct rotational angle;
             if (i % 4 == 0 || i % 4 == 3) {
                 rotationAngle = 90;
             }
             else{
                 rotationAngle = -90;
             }
+
+            // Determines the direction of the transition
             if (i % 2 == 0) {
                 translate.setByX(100);
                 rotate.setByAngle(rotationAngle);

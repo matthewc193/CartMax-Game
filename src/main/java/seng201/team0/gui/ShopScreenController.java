@@ -1,8 +1,10 @@
 package seng201.team0.gui;
 
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
@@ -43,6 +45,16 @@ public class ShopScreenController {
     public Label welcomeText;
     @FXML
     public Button backToMainMenuButton;
+    @FXML
+    public Label resourceUpgradeLabel;
+    @FXML
+    public Label reloadSpeedUpgradeLabel;
+    @FXML
+    public Button upgradeResourceAmountButton;
+    @FXML
+    public Button upgradeReloadSpeedButton;
+    @FXML
+    public Label playerMoneyLabel;
     public void initialize(){
 
         backToMainMenuButton.setOnAction(actionEvent -> {
@@ -54,7 +66,7 @@ public class ShopScreenController {
         List<Tower> towerTypes = new ArrayList<>(Arrays.asList(new woodOne(), new woodTwo(), new clayOne(), new clayTwo(), new stoneOne(), new stoneTwo()));
         List<Button> towerShopButtons = List.of(woodOneShop, woodTwoShop, clayOneShop, clayTwoShop, stoneOneShop, stoneTwoShop);
         List<String> towerOwnedText = List.of("Wood Tower 1.0", "Wood Tower 2.0", "Clay Tower 1.0", "Clay Tower 2.0", "Stone Tower 1.0", "Stone Tower 2.0");
-        List<String> towerLockedText = List.of("Wood Tower 1.0 \nLOCKED", "Wood Tower 2.0", "Clay Tower 1.0", "Clay Tower 2.0", "Stone Tower 1.0", "Stone Tower 2.0");
+        List<String> towerLockedText = List.of("Wood Tower 1.0 \nLOCKED", "Wood Tower 2.0 \nLOCKED", "Clay Tower 1.0 \nLOCKED", "Clay Tower 2.0 \nLOCKED", "Stone Tower 1.0 \nLOCKED", "Stone Tower 2.0\nLOCKED");
 
         // Setting button text based on which towers the player owns
         for (int i = 0; i < towerTypes.size(); i++){
@@ -88,6 +100,27 @@ public class ShopScreenController {
                 }
             });
         }
+
+        upgradeReloadSpeedButton.setOnMouseEntered(event -> {
+            reloadSpeedUpgradeLabel.setText("-0.2s");
+            reloadSpeedUpgradeLabel.setStyle("-fx-text-fill: #66ff00;");
+            reloadSpeedUpgradeLabel.setFont(Font.font("Bold"));
+        });
+        upgradeReloadSpeedButton.setOnMouseExited(event -> {
+            reloadSpeedUpgradeLabel.setText("");
+        });
+
+        upgradeResourceAmountButton.setOnMouseEntered(event -> {
+            resourceUpgradeLabel.setText("+2");
+            resourceUpgradeLabel.setStyle("-fx-text-fill: #66ff00;");
+            resourceUpgradeLabel.setFont(Font.font("Bold"));
+        });
+        upgradeResourceAmountButton.setOnMouseExited(event -> {
+            resourceUpgradeLabel.setText("");
+        });
+
+        playerMoneyLabel.setText(String.valueOf(player.getMoney()));
+
     }
 
     public static boolean containsInstanceOfClass(ArrayList<Tower> list, Class<?> clazz) {

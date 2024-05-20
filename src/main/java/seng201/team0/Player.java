@@ -1,12 +1,13 @@
 package seng201.team0;
 
+import javafx.beans.value.ObservableValue;
 import seng201.team0.towers.Tower;
 
 import java.util.ArrayList;
 
 public class Player {
     String name;
-    double money;
+    int money;
     ArrayList<Tower> towers;
     public Player(){
         this.name = null;
@@ -23,7 +24,7 @@ public class Player {
     public ArrayList<Tower> getTowers() {
         return towers;
     }
-    public double getMoney() {
+    public int getMoney() {
         return money;
     }
     public void setName(String name){
@@ -52,10 +53,10 @@ public class Player {
     /**
      * Methods to increase and decrease account balance of player
      */
-    public void decreaseMoney(double amount){
+    public void decreaseMoney(int amount){
         this.money -= amount;
     }
-    public void increaseMoney(double amount){
+    public void increaseMoney(int amount){
         this.money += amount;
     }
 
@@ -72,4 +73,5 @@ public class Player {
             latestTower.setStatus("reserved");
         }
     }
+
 }
