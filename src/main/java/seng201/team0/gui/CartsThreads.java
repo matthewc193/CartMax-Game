@@ -4,7 +4,11 @@ package seng201.team0.gui;
 import javafx.animation.SequentialTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
+import seng201.team0.carts.Cart;
+import seng201.team0.carts.WoodCart;
+import seng201.team0.game.Round;
 
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -14,13 +18,15 @@ import java.util.Random;
  */
 public class CartsThreads extends Thread {
     InGameScreenController inGameScreenController;
+    Round round;
 
     /**
      * Constructor method
      * @param inGameScreenController
      */
-    public  CartsThreads(InGameScreenController inGameScreenController) {
+    public  CartsThreads(InGameScreenController inGameScreenController, Round round) {
         this.inGameScreenController = inGameScreenController;
+        this.round = round;
     }
 
     /**
@@ -36,6 +42,8 @@ public class CartsThreads extends Thread {
                 try {
                     // Sleep for 1 second (1000 milliseconds) between animations
                     SequentialTransition translate = inGameScreenController.animateCart(inGameScreenController.mineCart, (ImageView) inGameScreenController.getCartImageViews().get(i));
+                    round.addCart(new WoodCart(), translate, (ImageView) inGameScreenController.getCartImageViews().get(i));
+                    System.out.println(round.getCurrentCarts());
                     if (i != 0) {
                         CartsThreads.sleep(randomNumber); // Determines the time in-between the carts
                     }
