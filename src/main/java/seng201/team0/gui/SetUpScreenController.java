@@ -29,7 +29,6 @@ import javafx.scene.control.TextFormatter;
 public class SetUpScreenController {
     /**
      * Initialize the window
-     *
      * @param stage Top level container for this window
      */
     private GameEnvironment gameEnvironment;

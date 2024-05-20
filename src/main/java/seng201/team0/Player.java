@@ -74,4 +74,20 @@ public class Player {
         }
     }
 
+    public void sellTower(int playerTowerInx){
+        this.money += towers.get(playerTowerInx).getCost();
+        this.towers.remove(playerTowerInx);
+    }
+
+    public boolean buyTower(Tower tower){
+        if (this.money >= tower.getCost()){
+            this.money -= tower.getCost();
+            this.towers.add(tower);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

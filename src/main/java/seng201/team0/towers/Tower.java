@@ -8,7 +8,7 @@ public abstract class Tower {
     int resourceAmount;
     double reloadSpeed;
     String resourceType;
-    double cost;
+    int cost;
     String towerName;
     String status;
 
@@ -18,7 +18,7 @@ public abstract class Tower {
     public int getResourceAmount() {return resourceAmount;}
     public double getReloadSpeed() {return reloadSpeed;}
     public String getResourceType() {return resourceType;}
-    public double getCost() {return cost;}
+    public int getCost() {return cost;}
     public String getTowerName() {return towerName;}
     public String getStatus() {return status;}
 
@@ -33,8 +33,8 @@ public abstract class Tower {
      * @return true is player has sufficient funds, false otherwise
      */
     public boolean upgradeResourceAmount(Player player){
-        if(player.getMoney() >= 20){
-            player.decreaseMoney(20);
+        if(player.getMoney() >= 50){
+            player.decreaseMoney(50);
             this.resourceAmount += 2;
             return true;
         }
@@ -51,8 +51,8 @@ public abstract class Tower {
      * false if player has insufficient funds or reload speed is at its minimum(1.0)
      */
     public boolean upgradeReloadSpeed(Player player){
-        if(player.getMoney() >= 20 && this.reloadSpeed > 1.0){
-            player.decreaseMoney(20);
+        if(player.getMoney() >= 50 && this.reloadSpeed > 0.2){
+            player.decreaseMoney(50);
             this.reloadSpeed -= 0.2;
             this.reloadSpeed = Math.round(this.reloadSpeed * 10.0)/10.0;
             return true;

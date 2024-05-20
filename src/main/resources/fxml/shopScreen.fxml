@@ -14,12 +14,12 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Button fx:id="woodOneShop" layoutX="14.0" layoutY="106.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="woodOneShop" />
-      <Button fx:id="woodTwoShop" layoutX="14.0" layoutY="251.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" />
-      <Button fx:id="clayTwoShop" layoutX="148.0" layoutY="251.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" />
-      <Button fx:id="stoneOneShop" layoutX="282.0" layoutY="106.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" />
-      <Button fx:id="stoneTwoShop" layoutX="282.0" layoutY="251.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" />
-      <Button fx:id="clayOneShop" layoutX="148.0" layoutY="106.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" />
+      <Button fx:id="woodOneShop" layoutX="14.0" layoutY="106.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="woodOneShop" textAlignment="CENTER" />
+      <Button fx:id="woodTwoShop" layoutX="14.0" layoutY="251.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" textAlignment="CENTER" />
+      <Button fx:id="clayTwoShop" layoutX="148.0" layoutY="251.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" textAlignment="CENTER" />
+      <Button fx:id="stoneOneShop" layoutX="282.0" layoutY="106.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" textAlignment="CENTER" />
+      <Button fx:id="stoneTwoShop" layoutX="282.0" layoutY="251.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" textAlignment="CENTER" />
+      <Button fx:id="clayOneShop" layoutX="148.0" layoutY="106.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="117.0" text="Button" textAlignment="CENTER" />
       <Label layoutX="422.0" layoutY="106.0" text="Tower Stats" underline="true">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -60,5 +60,18 @@
             <Font size="13.0" />
          </font>
       </Label>
+      <Button fx:id="buyOrSellButton" layoutX="423.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Buy/Sell" />
+      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="488.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Img/coinIcon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="buyOrSellPrice" layoutX="512.0" layoutY="294.0" prefHeight="17.0" prefWidth="32.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="reloadUpgradeInvalid" layoutX="422.0" layoutY="263.0" prefHeight="17.0" prefWidth="88.0" />
+      <Label fx:id="resourceUpgradeInvalid" layoutX="422.0" layoutY="191.0" prefHeight="17.0" prefWidth="88.0" />
    </children>
 </AnchorPane>
