@@ -4,6 +4,7 @@ import javafx.beans.value.ObservableValue;
 import seng201.team0.towers.Tower;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     String name;
@@ -16,7 +17,7 @@ public class Player {
     }
 
     /**
-     * Basic getter methods
+     * Basic getter and setter methods
      */
     public String getName() {
         return name;
@@ -32,14 +33,31 @@ public class Player {
     }
     /**
      * Add a tower to players towers
+     *
+     * @param tower the tower being added
      */
     public void addTower(Tower tower){
         setLatestTowerStatus(tower);
         towers.add(tower);
     }
 
+    /**
+     * Removes a tower from the players towers
+     *
+     * @param tower the tower being removed
+     */
     public void removeTower(Tower tower) {
         towers.remove(tower);
+    }
+
+    public List<Tower> getSelectedTowers() {
+        List<Tower> selectedTowers = new ArrayList<>();
+        for (Tower tower : this.getTowers()) {
+            if (tower.getStatus().equals("selected")) {
+                selectedTowers.add(tower);
+            }
+        }
+        return selectedTowers;
     }
 
     /**
@@ -89,5 +107,4 @@ public class Player {
             return false;
         }
     }
-
 }

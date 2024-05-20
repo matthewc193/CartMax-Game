@@ -51,13 +51,17 @@ public class InventoryScreenController {
     private Button selectButton;
     @FXML
     private Button reserveButton;
-
+    /**
+     * Instance variables
+     */
     private final GameEnvironment gameEnvironment;
     private final Player player;
     private Tower currentTower;
     private List<Button> towerButtons;
     private List<Label> towerStatusLabels;
-
+    /**
+     * Constructor method
+     */
     public InventoryScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
@@ -78,6 +82,9 @@ public class InventoryScreenController {
         reserveButton.setOnAction(event -> reserveTower());
     }
 
+    /**
+     * Displays current player owned towers and their status ("selected" or "reserved")
+     */
     private void displayTowers() {
         List<Tower> towers = player.getTowers();
         for (int i = 0; i < towerButtons.size(); i++) {
@@ -93,6 +100,11 @@ public class InventoryScreenController {
         }
     }
 
+    /**
+     * Sets the tower clicked by the player as current and displays its stats
+     *
+     * @param tower the tower clicked by the player
+     */
     private void displayTowerStats(Tower tower) {
         currentTower = tower;
         resourceAmountLabel.setText("Resource amount:\n" + tower.getResourceAmount());
@@ -101,6 +113,9 @@ public class InventoryScreenController {
         costLabel.setText("Cost:\n" + tower.getCost());
     }
 
+    /**
+     * Changes the status of the current tower as "selected" if current status is "reserved"
+     */
     private void selectTower() {
         if (currentTower != null && currentTower.getStatus().equals("reserved")) {
             int count = 0;
@@ -118,6 +133,9 @@ public class InventoryScreenController {
         }
     }
 
+    /**
+     * Changes the status of the current tower as "reserved" if current status is "selected"
+     */
     private void reserveTower() {
         if (currentTower != null && currentTower.getStatus().equals("selected")) {
             int count = 0;
@@ -134,6 +152,7 @@ public class InventoryScreenController {
             }
         }
     }
+
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
