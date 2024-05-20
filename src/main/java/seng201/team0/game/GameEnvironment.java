@@ -42,14 +42,24 @@ public class GameEnvironment {
     /**
      * Basic getter and setter methods
      */
-    public Player getPlayer() {return player;}
-    public void setPlayer(Player player) {this.player = player;}
-    public int getTotalRounds() {return totalRounds;}
-    public void setTotalRounds(int rounds){
+    public Player getPlayer() {
+        return player;
+    }
+    public int getTotalRounds() {
+        return totalRounds;
+    }
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
+    }
+    public String getDifficulty() {
+        return difficulty;
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public void setTotalRounds(int rounds) {
         this.totalRounds = rounds;
     }
-    public int getCurrentRoundNumber() {return currentRoundNumber;}
-    public String getDifficulty() {return difficulty;}
     public void setDifficulty(String difficulty){
         this.difficulty = difficulty;
     }
