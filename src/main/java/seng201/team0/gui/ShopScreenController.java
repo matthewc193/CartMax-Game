@@ -2,7 +2,6 @@ package seng201.team0.gui;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -95,7 +94,7 @@ public class ShopScreenController {
         welcomeText.setText("Welcome to the Shop, " + player.getName() + "!");
 
         // Used to set actions for buttons
-        this.towerTypes = new ArrayList<>(Arrays.asList(new woodOne(), new woodTwo(), new clayOne(), new clayTwo(), new stoneOne(), new stoneTwo()));
+        this.towerTypes = new ArrayList<>(Arrays.asList(new WoodOne(), new WoodTwo(), new ClayOne(), new ClayTwo(), new StoneOne(), new StoneTwo()));
         List<Button> towerShopButtons = List.of(woodOneShop, woodTwoShop, clayOneShop, clayTwoShop, stoneOneShop, stoneTwoShop);
         List<String> towerOwnedText = List.of("Wood Tower 1.0", "Wood Tower 2.0", "Clay Tower 1.0", "Clay Tower 2.0", "Stone Tower 1.0", "Stone Tower 2.0");
         List<String> towerLockedText = List.of("Wood Tower 1.0 \nLOCKED", "Wood Tower 2.0 \nLOCKED", "Clay Tower 1.0 \nLOCKED", "Clay Tower 2.0 \nLOCKED", "Stone Tower 1.0 \nLOCKED", "Stone Tower 2.0\nLOCKED");

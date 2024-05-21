@@ -10,18 +10,12 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
-import seng201.team0.services.CounterService;
 import seng201.team0.towers.Tower;
 import seng201.team0.towers.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.awt.*;
-import javafx.scene.control.Tooltip;
-import javafx.util.StringConverter;
-import javafx.util.converter.DefaultStringConverter;
-import javafx.scene.control.TextFormatter;
 
 /**
  * Controller for setUpScreen.fxml
@@ -91,7 +85,7 @@ public class SetUpScreenController {
         player = gameEnvironment.getPlayer();
 
         List<Button> towerButtons = List.of(WoodOneButton, WoodTwoButton, ClayOneButton, ClayTwoButton, StoneOneButton, StoneTwoButton);
-        List<Tower> towerTypes = new ArrayList<>(Arrays.asList(new woodOne(), new woodTwo(), new clayOne(), new clayTwo(), new stoneOne(), new stoneTwo()));
+        List<Tower> towerTypes = new ArrayList<>(Arrays.asList(new WoodOne(), new WoodTwo(), new ClayOne(), new ClayTwo(), new StoneOne(), new StoneTwo()));
 
         //Action for when continue button in clicked
         continueButton.setOnAction(event -> {

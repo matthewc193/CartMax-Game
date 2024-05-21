@@ -1,7 +1,7 @@
 package seng201.team0.towers;
 
-public class clayOne extends Tower {
-    public clayOne(){
+public class ClayOne extends Tower {
+    public ClayOne(){
         this.resourceType = "Clay";
         this.cost = 150;
         this.reloadSpeed = 1.6;

@@ -2,7 +2,7 @@ package seng201.team0.unittests.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seng201.team0.Player;
-import seng201.team0.towers.woodOne;
+import seng201.team0.towers.WoodOne;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Matthew
  */
 public class TowersTest {
-    private woodOne testWoodOne;
+    private WoodOne testWoodOne;
     /**
      * Setup before each test, we create two objects, one an actual
      * instance of our WoodOne class, and another a mocked version
@@ -19,7 +19,7 @@ public class TowersTest {
      */
     @BeforeEach
     public void setUpTest(){
-        testWoodOne = new woodOne();
+        testWoodOne = new WoodOne();
     }
     @Test
     void testConstructor(){
