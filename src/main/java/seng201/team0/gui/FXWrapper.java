@@ -21,7 +21,7 @@ public class FXWrapper {
 
     public void init(Stage stage) {
         this.stage = stage;
-        new GameEnvironment(this::launchSetupScreen, this::launchMainScreen, this::launchInGameScreen, this::launchShopScreen, this::launchInventoryScreen, this::clearPane);
+        new GameEnvironment(this::launchSetupScreen, this::launchMainScreen, this::launchInGameScreen, this::launchShopScreen, this::launchInventoryScreen, this::launchRoundResultsScreen, this::launchGameClearScreen, this::launchGameOverScreen, this::clearPane);
     }
 
     public void launchSetupScreen(GameEnvironment gameEnvironment) {
@@ -89,6 +89,39 @@ public class FXWrapper {
         }
     }
 
+    public void launchRoundResultsScreen(GameEnvironment gameEnvironment) {
+        try {
+            FXMLLoader roundResultsScreenLoader = new FXMLLoader(getClass().getResource("/fxml/roundResultsScreen.fxml"));
+            roundResultsScreenLoader.setControllerFactory(param -> new RoundResultsScreenController(gameEnvironment));
+            Parent setupParent = roundResultsScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Results");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void launchGameClearScreen(GameEnvironment gameEnvironment) {
+        try {
+            FXMLLoader gameClearScreenLoader = new FXMLLoader(getClass().getResource("/fxml/gameClearScreen.fxml"));
+            gameClearScreenLoader.setControllerFactory(param -> new GameClearScreenController(gameEnvironment));
+            Parent setupParent = gameClearScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Clear!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void launchGameOverScreen(GameEnvironment gameEnvironment) {
+        try {
+            FXMLLoader gameOverScreenLoader = new FXMLLoader(getClass().getResource("/fxml/gameOverScreen.fxml"));
+            gameOverScreenLoader.setControllerFactory(param -> new GameOverScreenController(gameEnvironment));
+            Parent setupParent = gameOverScreenLoader.load();
+            pane.getChildren().add(setupParent);
+            stage.setTitle("Game Over");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
