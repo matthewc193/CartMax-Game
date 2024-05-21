@@ -81,7 +81,7 @@ public class Player {
     private void setLatestTowerStatus(Tower latestTower) {
         int count = 0;
         for (Tower tower : towers) {
-            if (tower.getStatus() == "selected") {
+            if (tower.getStatus().equals("selected")) {
                 count++;
             }
         }

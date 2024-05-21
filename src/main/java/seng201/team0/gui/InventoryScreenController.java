@@ -55,7 +55,7 @@ public class InventoryScreenController {
      * Instance variables
      */
     private final GameEnvironment gameEnvironment;
-    private final Player player;
+    private Player player;
     private Tower currentTower;
     private List<Button> towerButtons;
     private List<Label> towerStatusLabels;
@@ -64,11 +64,12 @@ public class InventoryScreenController {
      */
     public InventoryScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
-        this.player = gameEnvironment.getPlayer();
     }
 
     @FXML
     public void initialize() {
+        this.player = gameEnvironment.getPlayer();
+        currentTower = null;
         towerButtons = Arrays.asList(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button, tower6Button);
         towerStatusLabels = Arrays.asList(tower1StatusLabel, tower2StatusLabel, tower3StatusLabel, tower4StatusLabel, tower5StatusLabel, tower6StatusLabel);
         displayTowers();
@@ -118,13 +119,8 @@ public class InventoryScreenController {
      */
     private void selectTower() {
         if (currentTower != null && currentTower.getStatus().equals("reserved")) {
-            int count = 0;
-            for (Tower tower : player.getTowers()) {
-                if (tower.getStatus().equals("selected")) {
-                    count++;
-                }
-            }
-            if (count < 5) {
+            int length = player.getSelectedTowers().size();
+            if (length < 5) {
                 currentTower.setStatus("selected");
                 displayTowers();
             } else {
@@ -138,13 +134,8 @@ public class InventoryScreenController {
      */
     private void reserveTower() {
         if (currentTower != null && currentTower.getStatus().equals("selected")) {
-            int count = 0;
-            for (Tower tower : player.getTowers()) {
-                if (tower.getStatus().equals("reserved")) {
-                    count++;
-                }
-            }
-            if (count < 5) {
+            int length = player.getTowers().size() - player.getSelectedTowers().size();
+            if (length < 5) {
                 currentTower.setStatus("reserved");
                 displayTowers();
             } else {

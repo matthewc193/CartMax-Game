@@ -85,7 +85,11 @@ public class RoundResultsScreenController {
     @FXML
     private void onContinueClicked() {
         if (isWin) {
-            gameEnvironment.launchMainScreen();
+            if (gameEnvironment.getCurrentRoundNumber() == gameEnvironment.getTotalRounds()) {
+                gameEnvironment.launchGameClearScreen();
+            } else {
+                gameEnvironment.launchMainScreen();
+            }
         } else {
             gameEnvironment.launchGameOverScreen();
         }
