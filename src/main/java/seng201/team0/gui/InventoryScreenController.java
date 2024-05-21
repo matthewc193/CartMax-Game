@@ -164,6 +164,6 @@ public class InventoryScreenController {
 
     @FXML
     private void onCloseClicked() {
-        gameEnvironment.closeInventoryScreen();
+        gameEnvironment.launchMainScreen();
     }
 }

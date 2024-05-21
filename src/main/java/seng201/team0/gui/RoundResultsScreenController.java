@@ -84,6 +84,10 @@ public class RoundResultsScreenController {
 
     @FXML
     private void onContinueClicked() {
-        gameEnvironment.launchMainScreen();
+        if (isWin) {
+            gameEnvironment.launchMainScreen();
+        } else {
+            gameEnvironment.launchGameOverScreen();
+        }
     }
 }

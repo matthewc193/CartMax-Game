@@ -20,6 +20,9 @@ public class GameEnvironment {
     private final Consumer<GameEnvironment> inGameLauncher;
     private final Consumer<GameEnvironment> shopScreenLauncher;
     private final Consumer<GameEnvironment> inventoryScreenLauncher;
+    private final Consumer<GameEnvironment> roundResultsScreenLauncher;
+    private final Consumer<GameEnvironment> gameClearScreenLauncher;
+    private final Consumer<GameEnvironment> gameOverScreenLauncher;
 
     private final Runnable clearScreen;
     Player player;
@@ -28,12 +31,15 @@ public class GameEnvironment {
     String difficulty;
     Pane pane;
 
-    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher, Consumer<GameEnvironment> inventoryScreenLauncher, Runnable clearScreen) {
+    public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher, Consumer<GameEnvironment> inventoryScreenLauncher, Consumer<GameEnvironment> roundResultsScreenLauncher, Consumer<GameEnvironment> gameClearScreenLauncher, Consumer<GameEnvironment> gameOverScreenLauncher, Runnable clearScreen) {
         this.setupScreenLauncher = setupScreenLauncher;
         this.mainScreenLauncher = mainScreenLauncher;
         this.inGameLauncher = inGameScreenLauncher;
         this.shopScreenLauncher = shopScreenLauncher;
         this.inventoryScreenLauncher = inventoryScreenLauncher;
+        this.roundResultsScreenLauncher = roundResultsScreenLauncher;
+        this.gameClearScreenLauncher = gameClearScreenLauncher;
+        this.gameOverScreenLauncher = gameOverScreenLauncher;
         this.clearScreen = clearScreen;
         this.player = new Player();
         this.currentRoundNumber = 0;
@@ -79,28 +85,29 @@ public class GameEnvironment {
         clearScreen.run();
         mainScreenLauncher.accept(this);
     }
-    public void closeInventoryScreen() {
-        clearScreen.run();
-        launchMainScreen();
-    }
-
-    public void closeShopScreen() {
-        clearScreen.run();
-        launchMainScreen();
-    }
-
-    public void launchInventoryScreen(){
-        clearScreen.run();
-        inventoryScreenLauncher.accept(this);
-    }
     public void launchInGameScreen(){
         clearScreen.run();
         inGameLauncher.accept(this);
     }
-
     public void launchShopScreen(){
         clearScreen.run();
         shopScreenLauncher.accept(this);
+    }
+    public void launchInventoryScreen(){
+        clearScreen.run();
+        inventoryScreenLauncher.accept(this);
+    }
+    public void launchRoundResultsScreen() {
+        clearScreen.run();
+        roundResultsScreenLauncher.accept(this);
+    }
+    public void launchGameClearScreen() {
+        clearScreen.run();
+        gameClearScreenLauncher.accept(this);
+    }
+    public void launchGameOverScreen() {
+        clearScreen.run();
+        gameOverScreenLauncher.accept(this);
     }
 
     public void startRound(){
