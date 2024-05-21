@@ -43,6 +43,7 @@ public class GameEnvironment {
         this.clearScreen = clearScreen;
         this.player = new Player();
         this.currentRoundNumber = 0;
+        this.difficulty = "Easy";
         launchSetupScreen();
     }
     /**

@@ -17,14 +17,14 @@ public class Round {
     Player player;
     GameEnvironment gameEnvironment;
     ArrayList<List<Object>> currentCarts;
-    public Round(Player player, GameEnvironment gameEnvironment){
-        this.player = player;
+    boolean roundComplete;
+    public boolean allCartsIn;
+    public Round(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
+        this.player = gameEnvironment.getPlayer();
         this.currentCarts = new ArrayList<List<Object>>();
-    }
-
-    public Round(){
-        this.currentCarts = new ArrayList<List<Object>>();
+        this.roundComplete = false;
+        this.allCartsIn = false;
     }
 
     public void addCart(Cart cart, SequentialTransition transition, ImageView imageView){
@@ -37,11 +37,15 @@ public class Round {
         SequentialTransition transition = (SequentialTransition) currentCarts.get(cartIndx).get(1);
         transition.stop();
         this.getImageView(cartIndx).setImage(null);
-        System.out.println("Cart Removed");
         this.currentCarts.remove(cartIndx);
+        if (allCartsIn && getCurrentCarts == null){
+            System.out.println("RETURNING TO MAIN SCREEN");
+            roundComplete = true;
+            gameEnvironment.launchRoundResultsScreen();
+        }
     }
 
-    public ArrayList<?> getCurrentCarts(){
+    public ArrayList<List<Object>> getCurrentCarts(){
         return this.currentCarts;
     }
 
@@ -57,6 +61,20 @@ public class Round {
         return (ImageView) this.currentCarts.get(cartIndx).get(2);
     }
 
+    /**
+     * Return true if round is complete false otherwise
+     * @return Booleans
+     */
+    public boolean isRoundComplete(){
+        return this.roundComplete;
+    }
+
+    /**
+     * Sets roundComplete to true
+     */
+    public void completeRound(){
+        this.roundComplete = true;
+    }
     /**
      * Should set the number of cart for
      * @return

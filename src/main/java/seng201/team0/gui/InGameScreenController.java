@@ -1,8 +1,5 @@
 package seng201.team0.gui;
-import javafx.animation.PauseTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,9 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import seng201.team0.Player;
 import seng201.team0.carts.Cart;
-import seng201.team0.carts.WoodCart;
 import seng201.team0.game.GameEnvironment;
 import seng201.team0.game.Round;
+import seng201.team0.threads.CartsThreads;
 import seng201.team0.towers.Tower;
 
 import java.util.ArrayList;
@@ -62,14 +59,14 @@ public class InGameScreenController {
      * @param gameEnvironment
      */
     public InGameScreenController(GameEnvironment gameEnvironment){
-        this.mineCart = new Image(getClass().getResourceAsStream("/Img/mineCart.png"));
+        this.mineCart = new Image(getClass().getResourceAsStream("/Img/StoneCart.png"));
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
 
     }
 
     public void initialize(){
-        round = new Round();
+        round = new Round(this.gameEnvironment);
 
         cartImageViews = new ArrayList<>();
         cartImageViews.add(mineCartImage1);
@@ -78,22 +75,41 @@ public class InGameScreenController {
         cartImageViews.add(mineCartImage4);
         cartImageViews.add(mineCartImage5);
 
-        CartsThreads cartsThreads = new CartsThreads(this, round);
+        CartsThreads cartsThreads = new CartsThreads(this, round, this.gameEnvironment);
         cartsThreads.start();
         System.out.println(round.getCurrentCarts());
 
         List<Button> inventoryTowerButtons = List.of(inventoryTowerOne, inventoryTowerTwo, inventoryTowerThree, inventoryTowerFour, inventoryTowerFive);
         int buttonIndx = 0;
+
+        // Setting the function of the tower buttons, they should only shoot at the given material
         for(Tower tower : player.getTowers()){
             if (tower.getStatus() == "selected"){
                 Button towerButton = inventoryTowerButtons.get(buttonIndx);
                 towerButton.setText(tower.getTowerName());
                 buttonIndx += 1;
                 towerButton.setOnAction(actionEvent -> {
-                    round.getCart(0).increaseResourceAmount(tower.getResourceAmount());
-                    if (round.getCart(0).isCartFilled()){
-                        round.removeCart(0);
+                    for (int cartIndx = 0; cartIndx < round.getCurrentCarts().size(); cartIndx++){
+                        Cart cart = (Cart) round.getCart(cartIndx);
+                        System.out.println(cart.getResourceType());
+                        System.out.println(tower.getResourceType());
+                        if (cart.getResourceType().equals(tower.getResourceType())){
+                            cart.increaseResourceAmount(tower.getResourceAmount());
+                            if (cart.isCartFilled()){
+                                round.removeCart(cartIndx);
+                            }
+                            break;
+                        }
                     }
+                    towerButton.setDisable(true);
+                    Timeline timeline = new Timeline(new KeyFrame(
+                            Duration.seconds(tower.getReloadSpeed()),
+                            ae -> towerButton.setDisable(false)));
+                                    towerButton.setStyle("");
+                    timeline.setCycleCount(1);
+
+                    timeline.play();
+
 
                 });
             }
@@ -122,8 +138,7 @@ public class InGameScreenController {
      * @return SequentialTransition
      */
     public SequentialTransition animateCart(Image cartImage, ImageView imageView) {
-
-
+        System.out.println("aniamtio here?");
         // Setting imageView and imageView size
         imageView.setImage(cartImage);
         imageView.setFitHeight(90);
@@ -134,8 +149,8 @@ public class InGameScreenController {
         int rotationAngle = -90;
         SequentialTransition sequentialTransition = new SequentialTransition();
         boolean direction = true; // Determines if cart goes up or down Y axis
-        for (int i = 0; i < 8; i++) {
-            TranslateTransition translate = new TranslateTransition(Duration.millis(1000), imageView);
+        for (int i = 0; i < 12; i++) {
+            TranslateTransition translate = new TranslateTransition(Duration.millis(500), imageView);
             RotateTransition rotate = new RotateTransition(Duration.millis(500), imageView); // Creating a Rotate Transition
 
             // Set the correct rotational angle;
@@ -167,7 +182,13 @@ public class InGameScreenController {
             sequentialTransition.getChildren().addAll(translate, rotate);
         }
 
-        //sequentialTransition.setOnFinished(event -> imageView.setImage(null));
+
+
+        sequentialTransition.setOnFinished(event -> {
+            gameEnvironment.launchRoundResultsScreen();
+        });
+
+
 
         return sequentialTransition;
     }

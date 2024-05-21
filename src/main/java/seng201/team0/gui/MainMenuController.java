@@ -22,14 +22,19 @@ public class MainMenuController {
     public Button changeInventoryButton;
     @FXML
     public Button shopButton;
+    @FXML
+    public Label playerMoneyLabel;
 
     private Player player;
     private GameEnvironment gameEnvironment;
     public MainMenuController(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
+        this.player = gameEnvironment.getPlayer();
     }
 
     public void initialize(){
+        playerMoneyLabel.setText(String.valueOf(player.getMoney()));
+
 
         //Action for when continue button in clicked
         nextRoundButton.setOnAction(event -> {
@@ -58,7 +63,6 @@ public class MainMenuController {
 
     public void onNextRoundClicked(){
         gameEnvironment.launchInGameScreen();
-
     }
 
 

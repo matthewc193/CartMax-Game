@@ -6,6 +6,6 @@ public class ClayOne extends Tower {
         this.cost = 150;
         this.reloadSpeed = 1.6;
         this.resourceAmount = 8;
-        this.towerName = "Clay 1";
+        this.towerName = "Clay 1.0";
     }
 }
