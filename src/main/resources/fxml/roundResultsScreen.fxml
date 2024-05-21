@@ -10,8 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundResultsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.RoundResultsScreenController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -72,12 +71,12 @@
                   <Insets right="50.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="moneyLabel" text="Money:" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+            <Label fx:id="moneyLabel" text="Money:" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets />
                </GridPane.margin>
             </Label>
          </children>

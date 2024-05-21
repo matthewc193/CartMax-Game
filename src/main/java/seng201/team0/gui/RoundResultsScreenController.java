@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RoundResultsController {
+public class RoundResultsScreenController {
     @FXML
     private Label filledCartsLabel;
     @FXML
@@ -25,7 +25,7 @@ public class RoundResultsController {
     private List<Tower> brokenTowers;
     private boolean isWin;
 
-    public RoundResultsController(GameEnvironment gameEnvironment) {
+    public RoundResultsScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
         this.isWin = false;
