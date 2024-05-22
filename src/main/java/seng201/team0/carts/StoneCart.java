@@ -8,7 +8,7 @@ public class StoneCart extends Cart{
      */
     public StoneCart(){
         this.resourceType = "Stone";
-        this.cartCapacity = 100;
+        this.cartCapacity = 1;
         this.currentResourceAmount = 0;
         this.cartFilled = false;
         this.cartImage = new Image(getClass().getResourceAsStream("/Img/StoneCart.png"));

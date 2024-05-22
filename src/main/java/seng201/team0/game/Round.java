@@ -41,6 +41,7 @@ public class Round {
         if (allCartsIn && getCurrentCarts == null){
             System.out.println("RETURNING TO MAIN SCREEN");
             roundComplete = true;
+            System.out.println("ROUND COMPlete");
             gameEnvironment.launchRoundResultsScreen();
         }
     }
@@ -75,22 +76,5 @@ public class Round {
     public void completeRound(){
         this.roundComplete = true;
     }
-    /**
-     * Should set the number of cart for
-     * @return
-     */
-    /**
-    public int setRoundCarts(){
-        String difficulty = this.gameEnvironment.getDifficulty();
-        if (difficulty == "Easy"){
 
-        }
-        if (difficulty == "Medium"){
-
-        }
-        if (difficulty == "Hard"){
-
-        }
-    }
-     **/
 }
