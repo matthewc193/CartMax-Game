@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
+import seng201.team0.game.Round;
 import seng201.team0.towers.Tower;
 
 import java.util.ArrayList;
@@ -26,6 +27,12 @@ public class RoundResultsScreenController {
     private boolean isWin;
 
     public RoundResultsScreenController(GameEnvironment gameEnvironment) {
+//        Round prevRound = gameEnvironment.getPrevRound();
+//        prevRound.isRoundComplete(); // Determines is prev round in successful
+//        prevRound.determineNumberOfCarts(); // Number of carts in the pre round
+//        prevRound.determineNumberOfCarts() - prevRound.getCurrentCarts().size(); // Number of carts filed
+
+
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
         this.isWin = false;

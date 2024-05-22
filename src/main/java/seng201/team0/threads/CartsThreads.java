@@ -22,15 +22,15 @@ public class CartsThreads extends Thread {
     InGameScreenController inGameScreenController;
     Round round;
     GameEnvironment gameEnvironment;
-
     /**
      * Constructor method
      * @param inGameScreenController
      */
-    public  CartsThreads(InGameScreenController inGameScreenController, Round round, GameEnvironment gameEnvironment) {
+    public CartsThreads(InGameScreenController inGameScreenController, Round round, GameEnvironment gameEnvironment) {
         this.inGameScreenController = inGameScreenController;
         this.round = round;
         this.gameEnvironment = gameEnvironment;
+        gameEnvironment.setPrevRound(round);
     }
 
     /**
@@ -40,23 +40,17 @@ public class CartsThreads extends Thread {
     @Override
     public void run() {
         Random random = new Random(); // Creating new random number
-        int numberOfCarts = determineNumberOfCart();
-        int cartSpeed = determineCartSpeed();
+        int numberOfCarts = round.determineNumberOfCarts();
+        int cartSpeed = round.determineCartSpeed();
         for (int i = 0; i < numberOfCarts; i++) {
             int randomNumber = random.nextInt(4001 - 2500) + 2500;
             try {
                 Cart nextCart = getRandomCart();
                 SequentialTransition translate = inGameScreenController.animateCart(nextCart.getCartImage(), (ImageView) inGameScreenController.getCartImageViews().get(i), cartSpeed);
-                System.out.println(round.getCurrentCarts());
-
                 CartsThreads.sleep(randomNumber); // Determines the time in-between the carts
-
-                if (i == numberOfCarts - 1){
-                    round.allCartsIn = true;
-                }
-
                 round.addCart(nextCart, translate, (ImageView) inGameScreenController.getCartImageViews().get(i));
                 translate.play();
+                if (i == numberOfCarts - 1){round.allCartsIn = true;}
             } catch (InterruptedException e) {
                 // Handle the interruption appropriately
                 CartsThreads.currentThread().interrupt();
@@ -64,7 +58,6 @@ public class CartsThreads extends Thread {
                 break;
             }
         }
-
     }
 
     /**
@@ -90,38 +83,5 @@ public class CartsThreads extends Thread {
         }
     }
 
-    /**
-     * This method decides the number of cart that should
-     * be in a given round based of the difficulty and the
-     * progress through the game ie. the more rounds played
-     * the more carts per round.
-     * @return
-     */
-    public int determineNumberOfCart(){
-        int difficultyBoost = 0;
-        if(gameEnvironment.getDifficulty().equals("Medium")){
-            difficultyBoost = 1;
-        }
-        if(gameEnvironment.getDifficulty().equals("Hard")){
-            difficultyBoost = 2;
-        }
-        return gameEnvironment.getCurrentRoundNumber() + 3 + difficultyBoost;
-    }
 
-    /**
-     * Determines the speed of the cart based on difficulty
-     * and round number.
-     * @return
-     */
-    public int determineCartSpeed(){
-        int difficultyBoost = 0;
-        if(gameEnvironment.getDifficulty().equals("Medium")){
-            difficultyBoost -= 150;
-        }
-        if(gameEnvironment.getDifficulty().equals("Hard")){
-            difficultyBoost -= 300;
-        }
-        // First round start at 2500 + difficultyBoost as becomes faster as round number increases
-        return 2500 - gameEnvironment.getCurrentRoundNumber() * 125 + difficultyBoost;
-    }
 }

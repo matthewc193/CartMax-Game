@@ -180,7 +180,7 @@ public class InGameScreenController {
         int rotationAngle = -90;
         SequentialTransition sequentialTransition = new SequentialTransition();
         boolean direction = true; // Determines if cart goes up or down Y axis
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 11; i++) {
             TranslateTransition translate = new TranslateTransition(Duration.millis(cartSpeed), imageView);
             RotateTransition rotate = new RotateTransition(Duration.millis(500), imageView); // Creating a Rotate Transition
 
@@ -213,8 +213,8 @@ public class InGameScreenController {
             sequentialTransition.getChildren().addAll(translate, rotate);
         }
         sequentialTransition.setOnFinished(event -> {
-            gameEnvironment.setPrevRoundComplete(false);
-            gameEnvironment.launchGameOverScreen();
+            gameEnvironment.getPrevRound().setRoundComplete(false);
+            gameEnvironment.launchRoundResultsScreen();
         });
         return sequentialTransition;
     }

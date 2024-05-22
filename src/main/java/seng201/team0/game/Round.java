@@ -38,10 +38,45 @@ public class Round {
         transition.stop();
         this.getImageView(cartIndx).setImage(null);
         this.currentCarts.remove(cartIndx);
-        if (allCartsIn && getCurrentCarts == null){
-            gameEnvironment.setPrevRoundComplete(true);
+        if (allCartsIn && currentCarts == null){
+            this.setRoundComplete(true);
             gameEnvironment.launchRoundResultsScreen();
         }
+    }
+
+    /**
+     * This method decides the number of cart that should
+     * be in a given round based of the difficulty and the
+     * progress through the game ie. the more rounds played
+     * the more carts per round.
+     * @return
+     */
+    public int determineNumberOfCarts(){
+        int difficultyBoost = 0;
+        if(gameEnvironment.getDifficulty().equals("Medium")){
+            difficultyBoost = 1;
+        }
+        if(gameEnvironment.getDifficulty().equals("Hard")){
+            difficultyBoost = 2;
+        }
+        return gameEnvironment.getCurrentRoundNumber() + 3 + difficultyBoost;
+    }
+
+    /**
+     * Determines the speed of the cart based on difficulty
+     * and round number.
+     * @return
+     */
+    public int determineCartSpeed(){
+        int difficultyBoost = 0;
+        if(gameEnvironment.getDifficulty().equals("Medium")){
+            difficultyBoost -= 150;
+        }
+        if(gameEnvironment.getDifficulty().equals("Hard")){
+            difficultyBoost -= 300;
+        }
+        // First round start at 2500 + difficultyBoost as becomes faster as round number increases
+        return 2500 - gameEnvironment.getCurrentRoundNumber() * 125 + difficultyBoost;
     }
 
     public ArrayList<List<Object>> getCurrentCarts(){
@@ -69,10 +104,10 @@ public class Round {
     }
 
     /**
-     * Sets roundComplete to true
+     * Sets roundComplete
      */
-    public void completeRound(){
-        this.roundComplete = true;
+    public void setRoundComplete(boolean roundComplete){
+        this.roundComplete = roundComplete;
     }
 
 }
