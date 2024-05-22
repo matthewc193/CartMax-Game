@@ -7,10 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    /**
+     * Instance variables
+     */
     String name;
     int money;
     ArrayList<Tower> towers;
-    public Player(){
+
+    /**
+     * Constructor
+     */
+    public Player() {
         this.name = null;
         this.towers = new ArrayList<>();
         this.money = 0;
@@ -31,25 +38,11 @@ public class Player {
     public void setName(String name){
         this.name = name;
     }
-    /**
-     * Add a tower to players towers
-     *
-     * @param tower the tower being added
-     */
-    public void addTower(Tower tower){
-        setLatestTowerStatus(tower);
-        towers.add(tower);
-    }
 
     /**
-     * Removes a tower from the players towers
-     *
-     * @param tower the tower being removed
+     * Gets all towers from the player's towers that are status "selected"
+     * @return list of selected towers
      */
-    public void removeTower(Tower tower) {
-        towers.remove(tower);
-    }
-
     public List<Tower> getSelectedTowers() {
         List<Tower> selectedTowers = new ArrayList<>();
         for (Tower tower : this.getTowers()) {
@@ -61,6 +54,33 @@ public class Player {
     }
 
     /**
+     * Methods to increase and decrease account balance of player
+     */
+    public void increaseMoney(int amount){
+        this.money += amount;
+    }
+    public void decreaseMoney(int amount){
+        this.money -= amount;
+    }
+
+    /**
+     * Add a tower to players towers
+     * @param tower the tower being added
+     */
+    public void addTower(Tower tower){
+        setLatestTowerStatus(tower);
+        towers.add(tower);
+    }
+
+    /**
+     * Removes a tower from the players towers
+     * @param tower the tower being removed
+     */
+    public void removeTower(Tower tower) {
+        towers.remove(tower);
+    }
+
+    /**
      * Empties this towers from the players arraylist
      * Used in the setupscreen
      */
@@ -68,14 +88,20 @@ public class Player {
         this.towers = new ArrayList<>();
     }
 
-    /**
-     * Methods to increase and decrease account balance of player
-     */
-    public void decreaseMoney(int amount){
-        this.money -= amount;
+    public boolean buyTower(Tower tower){
+        if (this.money >= tower.getCost()){
+            this.money -= tower.getCost();
+            this.towers.add(tower);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
-    public void increaseMoney(int amount){
-        this.money += amount;
+
+    public void sellTower(int playerTowerInx){
+        this.money += towers.get(playerTowerInx).getCost();
+        this.towers.remove(playerTowerInx);
     }
 
     private void setLatestTowerStatus(Tower latestTower) {
@@ -89,22 +115,6 @@ public class Player {
             latestTower.setStatus("selected");
         } else {
             latestTower.setStatus("reserved");
-        }
-    }
-
-    public void sellTower(int playerTowerInx){
-        this.money += towers.get(playerTowerInx).getCost();
-        this.towers.remove(playerTowerInx);
-    }
-
-    public boolean buyTower(Tower tower){
-        if (this.money >= tower.getCost()){
-            this.money -= tower.getCost();
-            this.towers.add(tower);
-            return true;
-        }
-        else{
-            return false;
         }
     }
 }
