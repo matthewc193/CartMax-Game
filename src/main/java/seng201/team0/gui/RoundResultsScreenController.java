@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import seng201.team0.Player;
 import seng201.team0.game.GameEnvironment;
+import seng201.team0.game.Round;
 import seng201.team0.towers.Tower;
 
 import java.util.ArrayList;
@@ -23,12 +24,10 @@ public class RoundResultsScreenController {
     private GameEnvironment gameEnvironment;
     private Player player;
     private List<Tower> brokenTowers;
-    private boolean isWin;
 
     public RoundResultsScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
-        this.isWin = false;
     }
 
     public void initialize() {
@@ -41,7 +40,7 @@ public class RoundResultsScreenController {
     }
 
     private void displayFilledCarts() {
-        filledCartsLabel.setText("5/5");
+        filledCartsLabel.setText("?/?");
     }
 
     private void randomTowerBreak() {
@@ -68,7 +67,7 @@ public class RoundResultsScreenController {
     }
 
     private void displayMessage() {
-        if (isWin) {
+        if (gameEnvironment.getPrevRoundComplete()) {
             messageLabel.setText("Congratulations! You have successfully filled all carts.");
         } else {
             messageLabel.setText("Sorry! You could not fill all the carts.");
@@ -76,7 +75,7 @@ public class RoundResultsScreenController {
     }
 
     private void displayMoney() {
-        if (isWin) {
+        if (gameEnvironment.getPrevRoundComplete()) {
             player.increaseMoney(100);
         }
         moneyLabel.setText("Money: " + String.valueOf(player.getMoney()));
@@ -84,7 +83,7 @@ public class RoundResultsScreenController {
 
     @FXML
     private void onContinueClicked() {
-        if (isWin) {
+        if (gameEnvironment.getPrevRoundComplete()) {
             if (gameEnvironment.getCurrentRoundNumber() == gameEnvironment.getTotalRounds()) {
                 gameEnvironment.launchGameClearScreen();
             } else {
