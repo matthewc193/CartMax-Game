@@ -212,15 +212,10 @@ public class InGameScreenController {
             // Add both translate and rotate transitions to the sequential transition
             sequentialTransition.getChildren().addAll(translate, rotate);
         }
-
-
-
         sequentialTransition.setOnFinished(event -> {
+            gameEnvironment.setPrevRoundComplete(false);
             gameEnvironment.launchGameOverScreen();
         });
-
-
-
         return sequentialTransition;
     }
 

@@ -51,7 +51,7 @@ public class CartsThreads extends Thread {
 
                 CartsThreads.sleep(randomNumber); // Determines the time in-between the carts
 
-                if (i == numberOfCarts){
+                if (i == numberOfCarts - 1){
                     round.allCartsIn = true;
                 }
 

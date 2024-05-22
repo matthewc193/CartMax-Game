@@ -24,6 +24,11 @@ import java.util.List;
 public class ShopScreenController {
     private GameEnvironment gameEnvironment;
     private Player player;
+
+    /**
+     * Creates new player
+     * @param stage
+     */
     public void init(Stage stage) {
         player = new Player();
     }
@@ -101,8 +106,10 @@ public class ShopScreenController {
 
         // Setting button text based on which towers the player owns
         for (int i = 0; i < towerTypes.size(); i++){
-            if (containsInstanceOfClass(this.player.getTowers(), towerTypes.get(i).getClass())){
+            int finalI = i;
+            if (containsInstanceOfClass(this.player.getTowers(), towerTypes.get(finalI).getClass())){
                 towerShopButtons.get(i).setText(towerOwnedText.get(i));
+
             }
             else{
                 towerShopButtons.get(i).setText(towerLockedText.get(i));
@@ -110,7 +117,7 @@ public class ShopScreenController {
 
         }
 
-        //Sets actions for all button so that the stat are displayed
+        //Sets actions for all button so that the stats are displayed
         for (int i = 0; i < towerShopButtons.size(); i++){
             int finalI = i;
             towerShopButtons.get(i).setOnAction(event -> {
@@ -120,7 +127,6 @@ public class ShopScreenController {
                     setStatsTowerOwned(playerTowersIndx); // Displays stats
                     setUpgradeButtonsTowerOwned(playerTowersIndx); // Sets action for upgrade buttons
                     setSellButton(playerTowersIndx, towerShopButtons.get(finalI)); // Sets actions for the sell button
-
                 }
                 // Player does not own tower
                 else{
@@ -130,8 +136,7 @@ public class ShopScreenController {
                     }
 
                 towerShopButtons.get(finalI).setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
-                // Setting the style of other button to default
-                for(int j = 0; j < towerShopButtons.size(); j++){
+                for(int j = 0; j < towerShopButtons.size(); j++){  // Setting the style of other button to default
                     if (j != finalI){
                         towerShopButtons.get(j).setStyle("");
                     }

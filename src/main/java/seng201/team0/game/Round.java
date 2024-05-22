@@ -39,9 +39,7 @@ public class Round {
         this.getImageView(cartIndx).setImage(null);
         this.currentCarts.remove(cartIndx);
         if (allCartsIn && getCurrentCarts == null){
-            System.out.println("RETURNING TO MAIN SCREEN");
-            roundComplete = true;
-            System.out.println("ROUND COMPlete");
+            gameEnvironment.setPrevRoundComplete(true);
             gameEnvironment.launchRoundResultsScreen();
         }
     }

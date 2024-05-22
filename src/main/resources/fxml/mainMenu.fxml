@@ -5,16 +5,28 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.MainMenuController">
    <children>
-      <Button fx:id="nextRoundButton" layoutX="223.0" layoutY="156.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="154.0" text="Next Round " />
-      <Button fx:id="shopButton" layoutX="116.0" layoutY="295.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="367.0" text="Shop " />
-      <Label layoutX="237.0" layoutY="14.0" prefHeight="47.0" prefWidth="106.0" text="Cart Max" />
-      <Label fx:id="roundsLabel" layoutX="209.0" layoutY="72.0" text="Round X of Y Rounds" />
-      <Button fx:id="changeInventoryButton" layoutX="48.0" layoutY="200.0" mnemonicParsing="false" text="Change Inventory " />
-      <Label fx:id="playerNameLabel" layoutX="251.0" layoutY="53.0" text="Player Name" />
-      <Label fx:id="playerMoneyLabel" layoutX="56.0" layoutY="17.0" text="0" />
+      <ImageView fitHeight="402.0" fitWidth="602.0" layoutX="-2.0" layoutY="-1.0" opacity="0.35" pickOnBounds="true">
+         <image>
+            <Image url="@../Img/cartMaxBackground.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="nextRoundButton" layoutX="213.0" layoutY="155.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="142.0" text="Next Round " />
+      <Button fx:id="shopButton" layoutX="301.0" layoutY="283.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="129.0" text="Shop" />
+      <Label layoutX="232.0" layoutY="11.0" prefHeight="47.0" prefWidth="136.0" text="CartMax">
+         <font>
+            <Font name="Verdana Bold" size="29.0" />
+         </font></Label>
+      <Label fx:id="roundsLabel" layoutX="229.0" layoutY="67.0" prefHeight="20.0" prefWidth="142.0" text="Round X of Y Rounds">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="changeInventoryButton" layoutX="148.0" layoutY="283.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="129.0" text="Change Inventory " />
+      <Label fx:id="playerNameLabel" layoutX="251.0" layoutY="50.0" prefHeight="17.0" prefWidth="96.0" text="Player Name" textAlignment="CENTER" />
+      <Label fx:id="playerMoneyLabel" layoutX="46.0" layoutY="17.0" prefHeight="17.0" prefWidth="56.0" text="0" />
       <ImageView fitHeight="41.0" fitWidth="67.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/coinIcon.png" />

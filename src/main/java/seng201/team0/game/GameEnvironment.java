@@ -30,6 +30,7 @@ public class GameEnvironment {
     int currentRoundNumber;
     String difficulty;
     Pane pane;
+    public boolean prevRoundComplete;
 
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher, Consumer<GameEnvironment> inventoryScreenLauncher, Consumer<GameEnvironment> roundResultsScreenLauncher, Consumer<GameEnvironment> gameClearScreenLauncher, Consumer<GameEnvironment> gameOverScreenLauncher, Runnable clearScreen) {
         this.setupScreenLauncher = setupScreenLauncher;
@@ -118,4 +119,15 @@ public class GameEnvironment {
         //To be implemented   
     }
 
+    /**
+     * Sets round complete
+     * @param roundComplete
+     */
+    public void setPrevRoundComplete(boolean roundComplete) {
+        this.prevRoundComplete = roundComplete;
+    }
+
+    public boolean getPrevRoundComplete(){
+        return this.prevRoundComplete;
+    }
 }
