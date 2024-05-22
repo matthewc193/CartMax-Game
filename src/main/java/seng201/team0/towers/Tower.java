@@ -13,7 +13,7 @@ public abstract class Tower {
     String status;
 
     /**
-     * Basic Getter methods
+     * Basic getter and setter methods
      */
     public int getResourceAmount() {return resourceAmount;}
     public double getReloadSpeed() {return reloadSpeed;}
@@ -21,7 +21,6 @@ public abstract class Tower {
     public int getCost() {return cost;}
     public String getTowerName() {return towerName;}
     public String getStatus() {return status;}
-
     public void setStatus(String status) {
         this.status = status;
     }
