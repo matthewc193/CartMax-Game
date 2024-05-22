@@ -77,6 +77,8 @@ public class InventoryScreenController {
             int finalI = i;
             towerButtons.get(i).setOnAction(event -> {
                 displayTowerStats(player.getTowers().get(finalI));
+                resetTowerStyle();
+                towerButtons.get(finalI).setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
             });
         }
         selectButton.setOnAction(event -> selectTower());
@@ -112,6 +114,12 @@ public class InventoryScreenController {
         reloadSpeedLabel.setText("Reload speed:\n" + tower.getReloadSpeed());
         resourceTypeLabel.setText("Resource type:\n" + tower.getResourceType());
         costLabel.setText("Cost:\n" + tower.getCost());
+    }
+
+    private void resetTowerStyle() {
+        for (int i = 0; i < player.getTowers().size(); i++) {
+            towerButtons.get(i).setStyle("");
+        }
     }
 
     /**
