@@ -8,7 +8,7 @@ public class WoodCart extends Cart{
      */
     public WoodCart(){
         this.resourceType = "Wood";
-        this.cartCapacity = 100;
+        this.cartCapacity = 1;
         this.currentResourceAmount = 0;
         this.cartFilled = false;
         this.cartImage = new Image(getClass().getResourceAsStream("/Img/WoodCart.png"));

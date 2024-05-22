@@ -13,7 +13,7 @@ public class Player {
     public Player(){
         this.name = null;
         this.towers = new ArrayList<>();
-        this.money = 0;
+        this.money = 2222220;
     }
 
     /**

@@ -16,5 +16,20 @@
       <ImageView fx:id="mineCartImage5" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="inventoryTowerFive" layoutX="484.0" layoutY="20.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="101.0" text="N/A" />
       <Button fx:id="inventoryTowerFour" layoutX="368.0" layoutY="20.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="101.0" text="N/A" />
+      <ImageView fx:id="mineCartImage6" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage7" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage8" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage9" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage10" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage11" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage12" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage13" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage14" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage15" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage16" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage17" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage18" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage19" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="mineCartImage20" fitHeight="31.0" fitWidth="21.0" layoutX="-21.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

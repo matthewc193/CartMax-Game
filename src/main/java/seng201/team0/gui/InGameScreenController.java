@@ -14,6 +14,7 @@ import seng201.team0.threads.CartsThreads;
 import seng201.team0.towers.Tower;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -45,6 +46,37 @@ public class InGameScreenController {
     public ImageView mineCartImage4;
     @FXML
     public ImageView mineCartImage5;
+    @FXML
+    public ImageView mineCartImage6;
+    @FXML
+    public ImageView mineCartImage7;
+    @FXML
+    public ImageView mineCartImage8;
+    @FXML
+    public ImageView mineCartImage9;
+    @FXML
+    public ImageView mineCartImage10;
+    @FXML
+    public ImageView mineCartImage11;
+    @FXML
+    public ImageView mineCartImage12;
+    @FXML
+    public ImageView mineCartImage13;
+    @FXML
+    public ImageView mineCartImage14;
+    @FXML
+    public ImageView mineCartImage15;
+    @FXML
+    public ImageView mineCartImage16;
+    @FXML
+    public ImageView mineCartImage17;
+    @FXML
+    public ImageView mineCartImage18;
+    @FXML
+    public ImageView mineCartImage19;
+    @FXML
+    public ImageView mineCartImage20;
+
 
     public Image mineCart;
     public ArrayList<ImageView>  cartImageViews;
@@ -68,12 +100,12 @@ public class InGameScreenController {
     public void initialize(){
         round = new Round(this.gameEnvironment);
 
-        cartImageViews = new ArrayList<>();
-        cartImageViews.add(mineCartImage1);
-        cartImageViews.add(mineCartImage2);
-        cartImageViews.add(mineCartImage3);
-        cartImageViews.add(mineCartImage4);
-        cartImageViews.add(mineCartImage5);
+        List<ImageView> imageViews = Arrays.asList(mineCartImage1,mineCartImage2,mineCartImage3,mineCartImage4,mineCartImage4,
+                mineCartImage5,mineCartImage6,mineCartImage7,mineCartImage8,mineCartImage9,mineCartImage10,mineCartImage11,
+                mineCartImage12,mineCartImage13,mineCartImage14,mineCartImage14,mineCartImage15,mineCartImage16,mineCartImage17,
+                mineCartImage18,mineCartImage19,mineCartImage20);
+        cartImageViews = new ArrayList<>(imageViews);
+
 
         CartsThreads cartsThreads = new CartsThreads(this, round, this.gameEnvironment);
         cartsThreads.start();
@@ -137,8 +169,7 @@ public class InGameScreenController {
      * @param imageView
      * @return SequentialTransition
      */
-    public SequentialTransition animateCart(Image cartImage, ImageView imageView) {
-        System.out.println("aniamtio here?");
+    public SequentialTransition animateCart(Image cartImage, ImageView imageView, int cartSpeed) {
         // Setting imageView and imageView size
         imageView.setImage(cartImage);
         imageView.setFitHeight(90);
@@ -150,7 +181,7 @@ public class InGameScreenController {
         SequentialTransition sequentialTransition = new SequentialTransition();
         boolean direction = true; // Determines if cart goes up or down Y axis
         for (int i = 0; i < 12; i++) {
-            TranslateTransition translate = new TranslateTransition(Duration.millis(500), imageView);
+            TranslateTransition translate = new TranslateTransition(Duration.millis(cartSpeed), imageView);
             RotateTransition rotate = new RotateTransition(Duration.millis(500), imageView); // Creating a Rotate Transition
 
             // Set the correct rotational angle;
@@ -185,7 +216,7 @@ public class InGameScreenController {
 
 
         sequentialTransition.setOnFinished(event -> {
-            gameEnvironment.launchRoundResultsScreen();
+            gameEnvironment.launchGameOverScreen();
         });
 
 
