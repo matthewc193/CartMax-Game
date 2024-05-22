@@ -76,13 +76,15 @@ public class CartsThreads extends Thread {
         Cart nextCart;
         if (randomCartNumber == 0){
             nextCart = new WoodCart();
+            return nextCart;
         }
         if (randomCartNumber == 1){
             nextCart = new ClayCart();
+            return nextCart;
         }
-        else {
+        else{
             nextCart = new StoneCart();
+            return nextCart;
         }
-        return nextCart;
     }
 }

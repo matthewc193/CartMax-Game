@@ -37,7 +37,7 @@ public class Player {
      * @param tower the tower being added
      */
     public void addTower(Tower tower){
-        setLatestTowerStatus(tower);
+        this.setLatestTowerStatus(tower);
         towers.add(tower);
     }
 
@@ -100,7 +100,7 @@ public class Player {
     public boolean buyTower(Tower tower){
         if (this.money >= tower.getCost()){
             this.money -= tower.getCost();
-            this.towers.add(tower);
+            this.addTower(tower);
             return true;
         }
         else{

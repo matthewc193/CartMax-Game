@@ -69,6 +69,7 @@ public class InventoryScreenController {
 
     @FXML
     public void initialize() {
+
         towerButtons = Arrays.asList(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button, tower6Button);
         towerStatusLabels = Arrays.asList(tower1StatusLabel, tower2StatusLabel, tower3StatusLabel, tower4StatusLabel, tower5StatusLabel, tower6StatusLabel);
         displayTowers();
