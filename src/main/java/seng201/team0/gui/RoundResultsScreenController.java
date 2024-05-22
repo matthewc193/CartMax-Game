@@ -23,21 +23,17 @@ public class RoundResultsScreenController {
 
     private GameEnvironment gameEnvironment;
     private Player player;
+    private Round prevRound;
     private List<Tower> brokenTowers;
 
     public RoundResultsScreenController(GameEnvironment gameEnvironment) {
-//        Round prevRound = gameEnvironment.getPrevRound();
-//        prevRound.isRoundComplete(); // Determines is prev round in successful
-//        prevRound.determineNumberOfCarts(); // Number of carts in the pre round
-//        prevRound.determineNumberOfCarts() - prevRound.getCurrentCarts().size(); // Number of carts filed
-
-
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
+        this.prevRound = gameEnvironment.getPrevRound();
     }
 
     public void initialize() {
-        this.brokenTowers = new ArrayList<Tower>();
+        this.brokenTowers = new ArrayList<>();
         displayFilledCarts();
         randomTowerBreak();
         displayBrokenTowers();
@@ -46,7 +42,9 @@ public class RoundResultsScreenController {
     }
 
     private void displayFilledCarts() {
-        filledCartsLabel.setText("?/?");
+        int filledCarts = prevRound.determineNumberOfCarts() - prevRound.getCurrentCarts().size();
+        int totalCarts = prevRound.determineNumberOfCarts();
+        filledCartsLabel.setText(filledCarts + " / " + totalCarts);
     }
 
     private void randomTowerBreak() {
@@ -73,7 +71,7 @@ public class RoundResultsScreenController {
     }
 
     private void displayMessage() {
-        if (gameEnvironment.getPrevRoundComplete()) {
+        if (prevRound.isRoundComplete()) {
             messageLabel.setText("Congratulations! You have successfully filled all carts.");
         } else {
             messageLabel.setText("Sorry! You could not fill all the carts.");
@@ -81,15 +79,15 @@ public class RoundResultsScreenController {
     }
 
     private void displayMoney() {
-        if (gameEnvironment.getPrevRoundComplete()) {
+        if (prevRound.isRoundComplete()) {
             player.increaseMoney(100);
         }
-        moneyLabel.setText("Money: " + String.valueOf(player.getMoney()));
+        moneyLabel.setText("Money: " + player.getMoney());
     }
 
     @FXML
     private void onContinueClicked() {
-        if (gameEnvironment.getPrevRoundComplete()) {
+        if (prevRound.isRoundComplete()) {
             if (gameEnvironment.getCurrentRoundNumber() == gameEnvironment.getTotalRounds()) {
                 gameEnvironment.launchGameClearScreen();
             } else {
