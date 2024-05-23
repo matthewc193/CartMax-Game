@@ -80,8 +80,17 @@ public class RoundResultsScreenController {
 
     private void displayMoney() {
         if (prevRound.isRoundComplete()) {
-            player.increaseMoney(100);
-        }
+            switch(gameEnvironment.getDifficulty()) {
+                case "Easy":
+                    player.increaseMoney(200 + 10 * gameEnvironment.getCurrentRoundNumber());
+                    break;
+                case "Medium":
+                    player.increaseMoney(200 + 25 * gameEnvironment.getCurrentRoundNumber());
+                    break;
+                case "Hard":
+                    player.increaseMoney(200 + 50 * gameEnvironment.getCurrentRoundNumber());
+                }
+            }
         moneyLabel.setText("Money: " + player.getMoney());
     }
 

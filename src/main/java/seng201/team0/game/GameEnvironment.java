@@ -55,7 +55,6 @@ public class GameEnvironment {
         this.clearScreen = clearScreen;
         this.player = new Player();
         this.currentRoundNumber = 0;
-        this.difficulty = "Easy"; // Defaults to Easy if the player does not select difficulty
         launchSetupScreen();
     }
 

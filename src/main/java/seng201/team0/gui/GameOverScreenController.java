@@ -32,7 +32,7 @@ public class GameOverScreenController {
 
     private void displayResults() {
         difficultyLabel.setText(gameEnvironment.getDifficulty());
-        numRoundsLabel.setText(String.valueOf(gameEnvironment.getCurrentRoundNumber()));
+        numRoundsLabel.setText(String.valueOf(gameEnvironment.getCurrentRoundNumber() - 1));
     }
 
     @FXML

@@ -83,7 +83,7 @@ public class SetUpScreenController {
     public void initialize(){
 
         player = gameEnvironment.getPlayer();
-
+        this.difficulty = "Easy"; // Defaults to Easy if the player does not select difficulty
         List<Button> towerButtons = List.of(WoodOneButton, WoodTwoButton, ClayOneButton, ClayTwoButton, StoneOneButton, StoneTwoButton);
         List<Tower> towerTypes = new ArrayList<>(Arrays.asList(new WoodOne(), new WoodTwo(), new ClayOne(), new ClayTwo(), new StoneOne(), new StoneTwo()));
 
