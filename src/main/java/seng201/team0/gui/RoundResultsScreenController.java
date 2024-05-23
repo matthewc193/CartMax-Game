@@ -51,7 +51,7 @@ public class RoundResultsScreenController {
         List<Tower> usedTowers = player.getSelectedTowers();
         Random random = new Random();
         for (Tower tower : usedTowers) {
-            if (random.nextDouble() < 0.05) {
+            if (random.nextDouble() < 0.1) {
                 brokenTowers.add(tower);
                 player.removeTower(tower);
             }
@@ -66,8 +66,8 @@ public class RoundResultsScreenController {
             for (Tower brokenTower : brokenTowers) {
                 brokenTowersText.append(brokenTower.getTowerName()).append("\n");
             }
+            brokenTowersLabel.setText(brokenTowersText.toString());
         }
-        brokenTowersLabel.setText(brokenTowersText.toString());
     }
 
     private void displayMessage() {

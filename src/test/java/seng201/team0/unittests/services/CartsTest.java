@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seng201.team0.carts.WoodCart;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test carts implementation
@@ -23,9 +23,9 @@ public class CartsTest {
     @Test
     void testConstructor(){
         assertEquals("Wood", testWoodCart.getResourceType());
-        assertEquals(100, testWoodCart.getCartCapacity());
+        assertEquals(30, testWoodCart.getCartCapacity());
         assertEquals(0, testWoodCart.getCurrentResourceAmount());
-        assertEquals(false, testWoodCart.isCartFilled());
+        assertFalse(testWoodCart.isCartFilled());
     }
 
     /**
@@ -36,14 +36,14 @@ public class CartsTest {
     void testIncreaseResourceAmount(){
         testWoodCart.increaseResourceAmount(10);
         assertEquals(10, testWoodCart.getCurrentResourceAmount());
-        testWoodCart.increaseResourceAmount((89));
-        assertEquals(99, testWoodCart.getCurrentResourceAmount());
-        assertEquals(false, testWoodCart.isCartFilled());
+        testWoodCart.increaseResourceAmount((19));
+        assertEquals(29, testWoodCart.getCurrentResourceAmount());
+        assertFalse(testWoodCart.isCartFilled());
         testWoodCart.increaseResourceAmount(1);
-        assertEquals(100, testWoodCart.getCurrentResourceAmount());
-        assertEquals(true, testWoodCart.isCartFilled());
+        assertEquals(30, testWoodCart.getCurrentResourceAmount());
+        assertTrue(testWoodCart.isCartFilled());
         testWoodCart.increaseResourceAmount(10);
-        assertEquals(true, testWoodCart.isCartFilled());
+        assertTrue(testWoodCart.isCartFilled());
     }
 
 }

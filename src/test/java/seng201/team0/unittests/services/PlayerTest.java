@@ -3,17 +3,21 @@ package seng201.team0.unittests.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seng201.team0.game.Player;
-import seng201.team0.towers.ClayOne;
-import seng201.team0.towers.Tower;
+import seng201.team0.towers.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlayerTest {
     private Player testPlayer;
     @BeforeEach
     public void init() {
         this.testPlayer = new Player();
+    }
+    @Test
+    public void constructorTest() {
+        assertNull(testPlayer.getName());
+        assertEquals(0, testPlayer.getTowers().size());
+        assertEquals(0, testPlayer.getMoney());
     }
     @Test
     public void getSelectedTowerTest() {
@@ -34,28 +38,28 @@ public class PlayerTest {
     }
     @Test
     public void addTowerTest() {
-        Tower tower = new ClayOne();
+        Tower tower = new ClayTwo();
         testPlayer.addTower(tower);
         assertEquals(tower, testPlayer.getTowers().get(0));
         assertEquals("selected", testPlayer.getTowers().get(0).getStatus());
     }
     @Test
     public void removeTowerTest() {
-        Tower tower = new ClayOne();
+        Tower tower = new StoneOne();
         testPlayer.addTower(tower);
         testPlayer.removeTower(tower);
         assertEquals(0, testPlayer.getTowers().size());
     }
     @Test
     public void resetTowersTest() {
-        Tower tower = new ClayOne();
+        Tower tower = new StoneTwo();
         testPlayer.addTower(tower);
         testPlayer.resetTowers();
         assertEquals(0, testPlayer.getTowers().size());
     }
     @Test
     public void buyTowerTest() {
-        Tower tower = new ClayOne();
+        Tower tower = new WoodOne();
         testPlayer.increaseMoney(tower.getCost());
         boolean canBuy = testPlayer.buyTower(tower);
         assertTrue(canBuy);
@@ -63,7 +67,7 @@ public class PlayerTest {
     }
     @Test
     public void sellTowerTest() {
-        Tower tower = new ClayOne();
+        Tower tower = new WoodTwo();
         testPlayer.addTower(tower);
         testPlayer.sellTower(0);
         assertEquals(tower.getCost(), testPlayer.getMoney());
