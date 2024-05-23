@@ -1,5 +1,6 @@
 package seng201.team0.gui;
 
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Controller for setUpScreen.fxml
+ * Controller for setUpScreen.fxml.
  */
 public class SetUpScreenController {
     /**
@@ -29,19 +30,17 @@ public class SetUpScreenController {
     public void init(Stage stage) {
         player = new Player();
     }
-    public SetUpScreenController(){
 
-    }
+    /**
+     * Constructor method sets the gameEnvironment
+     * @param gameEnvironment
+     */
     public SetUpScreenController(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
 
     }
 
-
-
-    /**
-     * FXML import (buttons, test field etc.)
-     */
+    // FXML import (buttons, test field etc.)
     @FXML
     private Slider roundNumberSlider;
     @FXML
@@ -73,13 +72,13 @@ public class SetUpScreenController {
     @FXML
     public Label towerNumberWarning;
 
-    /**
-     * Temporary variables which are used to instantiate GameEnvironment Class
-     * when user clicks continue
-     */
     private Player player;
     private int totalRounds = 5;
     private String difficulty;
+
+    /**
+     * Initialize method used to set actions for buttons
+     */
     public void initialize(){
 
         player = gameEnvironment.getPlayer();
@@ -99,19 +98,12 @@ public class SetUpScreenController {
             }
         });
 
-        // Displays a warning message if name is not 3-15 chars or not alphanumeric
         playerNameInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() < 3 || newValue.length() > 15 || !newValue.matches("[a-zA-Z0-9]*")) {
-                playerNameWarning.setText("Name must be 3-15 alphanumeric characters!");
-                playerNameWarning.setStyle("-fx-text-fill: red;");
-            } else {
-                playerNameWarning.setText("");
-            }
+            setPlayerNameInput(observable, oldValue, newValue); // Displays a warning message if name is not 3-15 chars or not alphanumeric
         });
 
-        //Clears setUpTowers and tower buttons
         resetTowersButton.setOnAction(event -> {
-            player.resetTowers();
+            player.resetTowers(); //Clears setUpTowers and tower buttons
             for (int i = 0; i < towerButtons.size(); i++) {
                 towerButtons.get(i).setStyle("");
             }
@@ -119,31 +111,19 @@ public class SetUpScreenController {
 
         //Setting actions for difficulty buttons
         easyButton.setOnAction(event -> {
-            this.difficulty = "Easy";
-            easyButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
-            mediumButton.setStyle("");
-            hardButton.setStyle("");;
+            setEasyButton();
         });
-
         mediumButton.setOnAction(event -> {
-            this.difficulty = "Medium";
-            easyButton.setStyle("");
-            mediumButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
-            hardButton.setStyle("");
+            setMediumButton();
         });
-
         hardButton.setOnAction(event -> {
-            this.difficulty = "Hard";
-            easyButton.setStyle("");
-            mediumButton.setStyle("");
-            hardButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+            setHardButton();
         });
 
         //Setting action for selecting tower buttons
         for (int i = 0; i < towerButtons.size(); i++) {
             int finalI = i; // variables used within lambdas must be final
             towerButtons.get(i).setOnAction(event -> {
-
                 towerButtons.forEach(button -> {
                     if (button == towerButtons.get(finalI) && player.getTowers().size() < 3) {
                         button.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
@@ -153,7 +133,51 @@ public class SetUpScreenController {
             });
         }
 
+    }
 
+    /**
+     * Sets up the player name input so that it only allows names between 3 and 15 alphanumeric characters.
+     * @param observable
+     * @param oldValue
+     * @param newValue
+     */
+    public void setPlayerNameInput(Observable observable, String oldValue, String newValue){
+        if (newValue.length() < 3 || newValue.length() > 15 || !newValue.matches("[a-zA-Z0-9]*")) {
+            playerNameWarning.setText("Name must be 3-15 alphanumeric characters!");
+            playerNameWarning.setStyle("-fx-text-fill: red;");
+        } else {
+            playerNameWarning.setText("");
+        }
+    }
+
+    /**
+     * Sets up the easy button function
+     */
+    private void setEasyButton(){
+        this.difficulty = "Easy";
+        easyButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+        mediumButton.setStyle("");
+        hardButton.setStyle("");
+    }
+
+    /**
+     * Sets up the medium button function
+     */
+    private void setMediumButton(){
+        this.difficulty = "Medium";
+        easyButton.setStyle("");
+        mediumButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+        hardButton.setStyle("");
+    }
+
+    /**
+     * Sets up the hard button function
+     */
+    private void setHardButton(){
+        this.difficulty = "Hard";
+        easyButton.setStyle("");
+        mediumButton.setStyle("");
+        hardButton.setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
     }
 
     /**

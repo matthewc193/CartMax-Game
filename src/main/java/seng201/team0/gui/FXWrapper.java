@@ -11,6 +11,9 @@ import seng201.team0.game.GameEnvironment;
 
 import java.io.IOException;
 
+/**
+ * This class is responsible for launching screens.
+ */
 public class FXWrapper {
     @FXML
     private Pane pane;
@@ -19,11 +22,19 @@ public class FXWrapper {
 
     Player player = new Player();
 
+    /**
+     * initiated at the start of the game and creates the gameEnvironment for the game.
+     * @param stage
+     */
     public void init(Stage stage) {
         this.stage = stage;
         new GameEnvironment(this::launchSetupScreen, this::launchMainScreen, this::launchInGameScreen, this::launchShopScreen, this::launchInventoryScreen, this::launchRoundResultsScreen, this::launchGameClearScreen, this::launchGameOverScreen, this::clearPane);
     }
 
+    /**
+     * Launches SetupScreen
+     * @param gameEnvironment
+     */
     public void launchSetupScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource("/fxml/setUpScreen.fxml"));
@@ -37,10 +48,17 @@ public class FXWrapper {
         }
     }
 
+    /**
+     * Clears current contents of the pane before a new screen in displayed.
+     */
     public void clearPane() {
         pane.getChildren().removeAll(pane.getChildren());
     }
 
+    /**
+     * Launches MainScreen
+     * @param gameEnvironment
+     */
     public void launchMainScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader mainScreenLoader = new FXMLLoader(getClass().getResource("/fxml/mainMenu.fxml"));
@@ -53,6 +71,10 @@ public class FXWrapper {
         }
     }
 
+    /**
+     * Launches InGameScreen
+     * @param gameEnvironment
+     */
     public void launchInGameScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader inGameScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inGameScreen.fxml"));
@@ -64,7 +86,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Launches ShopScreen
+     * @param gameEnvironment
+     */
     public void launchShopScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader shopScreenLoader = new FXMLLoader(getClass().getResource("/fxml/shopScreen.fxml"));
@@ -76,7 +101,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Launches InventoryScreen
+     * @param gameEnvironment
+     */
     public void launchInventoryScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader inventoryScreenLoader = new FXMLLoader(getClass().getResource("/fxml/inventoryScreen.fxml"));
@@ -88,7 +116,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Launches RoundResultScreen
+     * @param gameEnvironment
+     */
     public void launchRoundResultsScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader roundResultsScreenLoader = new FXMLLoader(getClass().getResource("/fxml/roundResultsScreen.fxml"));
@@ -100,7 +131,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Launches GameClearScreen
+     * @param gameEnvironment
+     */
     public void launchGameClearScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader gameClearScreenLoader = new FXMLLoader(getClass().getResource("/fxml/gameClearScreen.fxml"));
@@ -112,7 +146,10 @@ public class FXWrapper {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Launches GameOverScreen
+     * @param gameEnvironment
+     */
     public void launchGameOverScreen(GameEnvironment gameEnvironment) {
         try {
             FXMLLoader gameOverScreenLoader = new FXMLLoader(getClass().getResource("/fxml/gameOverScreen.fxml"));

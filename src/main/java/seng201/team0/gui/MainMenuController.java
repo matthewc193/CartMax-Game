@@ -25,41 +25,56 @@ public class MainMenuController {
     public Label playerMoneyLabel;
 
     private Player player;
+
     private GameEnvironment gameEnvironment;
+
+    /**
+     * Constructor method sets gameEnvironment and player.
+     * @param gameEnvironment
+     */
     public MainMenuController(GameEnvironment gameEnvironment){
         this.gameEnvironment = gameEnvironment;
         this.player = gameEnvironment.getPlayer();
     }
-
+    /**
+     * Initialize method sets up button and animations for the mainMenu.
+     */
     public void initialize(){
-        playerMoneyLabel.setText(String.valueOf(player.getMoney()));
+        playerMoneyLabel.setText(String.valueOf(player.getMoney())); // Displays the players money
 
-
-        //Action for when continue button in clicked
         nextRoundButton.setOnAction(event -> {
-            onNextRoundClicked();
+            onNextRoundClicked(); //Action for when continue button in clicked
         });
 
         changeInventoryButton.setOnAction(actionEvent -> {
-            onInventoryButtonClicked();
+            onInventoryButtonClicked(); // Sets up the inventory button
         });
 
         shopButton.setOnAction(actionEvent -> {
-            onShopButtonClicked();
+            onShopButtonClicked(); // Sets up the shop button
         });
 
-        playerNameLabel.setText(gameEnvironment.getPlayer().getName());
-        roundsLabel.setText("Round " + gameEnvironment.getCurrentRoundNumber() + " of " + gameEnvironment.getTotalRounds());
+        playerNameLabel.setText(gameEnvironment.getPlayer().getName()); // Displays the player's name
+        roundsLabel.setText("Round " + gameEnvironment.getCurrentRoundNumber() + " of " + gameEnvironment.getTotalRounds()); // Displays the current round number
     }
 
+    /**
+     * launch the inventory when inventory button is clickes
+     */
     private void onInventoryButtonClicked() {
         gameEnvironment.launchInventoryScreen();
     }
 
+    /**
+     * Launches the shop when the shop button is clicked
+     */
     private void onShopButtonClicked() {
         gameEnvironment.launchShopScreen();
     }
 
+    /**
+     * Launches the in gameScreen when next round is clicked
+     */
     public void onNextRoundClicked(){
         gameEnvironment.launchInGameScreen();
     }

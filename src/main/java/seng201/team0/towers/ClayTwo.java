@@ -1,6 +1,12 @@
 package seng201.team0.towers;
 
+/**\
+ * Class for Clay Two tower
+ */
 public class ClayTwo extends Tower {
+    /**
+     * Constructor method sets, default values.
+     */
     public ClayTwo(){
         this.resourceType = "Clay";
         this.cost = 250;

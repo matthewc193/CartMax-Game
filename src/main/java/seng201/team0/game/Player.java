@@ -6,16 +6,18 @@ import seng201.team0.towers.Tower;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the properties for the player.
+ * Such as money and towers.
+ */
 public class Player {
-    /**
-     * Instance variables
-     */
     String name;
     int money;
     ArrayList<Tower> towers;
 
     /**
-     * Constructor
+     * Constructor, set player to null
+     * and initializes money and towers.
      */
     public Player() {
         this.name = null;
@@ -23,9 +25,8 @@ public class Player {
         this.money = 0;
     }
 
-    /**
-     * Basic getter and setter methods
-     */
+
+    // Basic getter and setter methods
     public String getName() {
         return name;
     }
@@ -54,11 +55,17 @@ public class Player {
     }
 
     /**
-     * Methods to increase and decrease account balance of player
+     * Methodsto increase account balance of player
+     * @param amount
      */
     public void increaseMoney(int amount){
         this.money += amount;
     }
+
+    /**
+     * Method to decrease the balance of the player.
+     * @param amount
+     */
     public void decreaseMoney(int amount){
         this.money -= amount;
     }
@@ -88,6 +95,12 @@ public class Player {
         this.towers = new ArrayList<>();
     }
 
+    /**
+     * If player has enough money tower will be added to the
+     * towers ArrayList and the player will.
+     * @param tower
+     * @return True if player has enough money, false otherwise
+     */
     public boolean buyTower(Tower tower){
         if (this.money >= tower.getCost()){
             this.money -= tower.getCost();
@@ -99,11 +112,21 @@ public class Player {
         }
     }
 
+    /**
+     * Removes tower from the player's ArrayList and
+     * increase player's account balance.
+     */
     public void sellTower(int playerTowerInx){
         this.money += towers.get(playerTowerInx).getCost();
         this.towers.remove(playerTowerInx);
     }
 
+    /**
+     * Sets the status of the towers (reversed or selected)
+     * based on how many tower are currently selected.
+     * (max of 5)
+     * @param latestTower
+     */
     private void setLatestTowerStatus(Tower latestTower) {
         int count = 0;
         for (Tower tower : towers) {

@@ -1,7 +1,11 @@
 package seng201.team0.towers;
-
+/**
+ * Class for wood one tower
+ */
 public class WoodOne extends Tower {
-    // Set to default values
+    /**
+     * Constructor method sets, default values.
+     */
     public WoodOne(){
         this.resourceType = "Wood";
         this.cost = 100;

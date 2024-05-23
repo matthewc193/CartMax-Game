@@ -24,7 +24,6 @@ public class RoundResultsScreenController {
     private GameEnvironment gameEnvironment;
     private Player player;
     private Round prevRound;
-    private List<Tower> brokenTowers;
 
     public RoundResultsScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
@@ -33,10 +32,8 @@ public class RoundResultsScreenController {
     }
 
     public void initialize() {
-        this.brokenTowers = new ArrayList<>();
+        displayBrokenTowers(prevRound.getBrokenTower());
         displayFilledCarts();
-        randomTowerBreak();
-        displayBrokenTowers();
         displayMessage();
         displayMoney();
     }
@@ -47,26 +44,14 @@ public class RoundResultsScreenController {
         filledCartsLabel.setText(filledCarts + " / " + totalCarts);
     }
 
-    private void randomTowerBreak() {
-        List<Tower> usedTowers = player.getSelectedTowers();
-        Random random = new Random();
-        for (Tower tower : usedTowers) {
-            if (random.nextDouble() < 0.1) {
-                brokenTowers.add(tower);
-                player.removeTower(tower);
-            }
-        }
-    }
-
-    private void displayBrokenTowers() {
+    private void displayBrokenTowers(Tower brokenTower) {
         StringBuilder brokenTowersText = new StringBuilder();
-        if (brokenTowers.isEmpty()) {
+        if (brokenTower == null) {
             brokenTowersLabel.setText("None!");
         } else {
-            for (Tower brokenTower : brokenTowers) {
                 brokenTowersText.append(brokenTower.getTowerName()).append("\n");
-            }
-            brokenTowersLabel.setText(brokenTowersText.toString());
+                System.out.println(brokenTower.getTowerName());
+                brokenTowersLabel.setText(brokenTower.getTowerName());
         }
     }
 
