@@ -22,6 +22,7 @@ public class PlayerTest {
     @Test
     public void getSelectedTowerTest() {
         Tower tower = new ClayOne();
+        assertTrue(testPlayer.getSelectedTowers().isEmpty());
         testPlayer.addTower(tower);
         assertEquals(1, testPlayer.getSelectedTowers().size());
     }
@@ -35,6 +36,8 @@ public class PlayerTest {
         testPlayer.increaseMoney(100);
         testPlayer.decreaseMoney(50);
         assertEquals(50, testPlayer.getMoney());
+        testPlayer.decreaseMoney(100); // Negative balance
+        assertEquals(-50, testPlayer.getMoney());
     }
     @Test
     public void addTowerTest() {
@@ -42,6 +45,13 @@ public class PlayerTest {
         testPlayer.addTower(tower);
         assertEquals(tower, testPlayer.getTowers().get(0));
         assertEquals("selected", testPlayer.getTowers().get(0).getStatus());
+        for (int i = 0; i < 5; i++) { // Adding more than five towers
+            testPlayer.addTower(tower);
+            assertEquals("selected", tower.getStatus());
+        }
+        testPlayer.addTower(tower);
+        assertEquals("reserved", tower.getStatus());
+        assertEquals(6, testPlayer.getTowers().size());
     }
     @Test
     public void removeTowerTest() {
@@ -54,6 +64,7 @@ public class PlayerTest {
     public void resetTowersTest() {
         Tower tower = new StoneTwo();
         testPlayer.addTower(tower);
+        assertEquals(1, testPlayer.getTowers().size());
         testPlayer.resetTowers();
         assertEquals(0, testPlayer.getTowers().size());
     }
@@ -64,6 +75,9 @@ public class PlayerTest {
         boolean canBuy = testPlayer.buyTower(tower);
         assertTrue(canBuy);
         assertEquals(tower, testPlayer.getTowers().get(0));
+        boolean canBuyTwo = testPlayer.buyTower(tower); // Not enough money
+        assertFalse(canBuyTwo);
+        assertEquals(1, testPlayer.getTowers().size());
     }
     @Test
     public void sellTowerTest() {
@@ -72,5 +86,10 @@ public class PlayerTest {
         testPlayer.sellTower(0);
         assertEquals(tower.getCost(), testPlayer.getMoney());
         assertEquals(0, testPlayer.getTowers().size());
+        testPlayer.sellTower(1);
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> { // Index out of bounds
+            testPlayer.sellTower(0);
+        });
+        assertEquals("Tower index out of bounds", exception.getMessage());
     }
 }

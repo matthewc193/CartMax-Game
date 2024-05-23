@@ -88,6 +88,12 @@ public class Player {
         this.towers = new ArrayList<>();
     }
 
+    /**
+     * Buys a tower if the player has sufficient money
+     * @param tower the tower being bought
+     * @return true if there is sufficient money and tower was bought
+     * false if player doesn't have sufficient money
+     */
     public boolean buyTower(Tower tower){
         if (this.money >= tower.getCost()){
             this.money -= tower.getCost();
@@ -99,11 +105,24 @@ public class Player {
         }
     }
 
+    /**
+     * Sells a tower from the player's towers
+     * @param playerTowerInx the index of the tower being sold
+     */
     public void sellTower(int playerTowerInx){
+        if (playerTowerInx < 0 || playerTowerInx >= towers.size()) {
+            throw new IndexOutOfBoundsException("Tower index out of bounds");
+        }
         this.money += towers.get(playerTowerInx).getCost();
         this.towers.remove(playerTowerInx);
     }
 
+    /**
+     * Sets the status of the newly added tower to "select"
+     * if there are less than 5 towers with status "selected"
+     * else sets to "reserved"
+     * @param latestTower the newly added tower
+     */
     private void setLatestTowerStatus(Tower latestTower) {
         int count = 0;
         for (Tower tower : towers) {

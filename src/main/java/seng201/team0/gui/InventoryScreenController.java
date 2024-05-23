@@ -66,6 +66,9 @@ public class InventoryScreenController {
         this.gameEnvironment = gameEnvironment;
     }
 
+    /**
+     * initialise
+     */
     @FXML
     public void initialize() {
         this.player = gameEnvironment.getPlayer();
@@ -116,6 +119,9 @@ public class InventoryScreenController {
         costLabel.setText("Cost:\n" + tower.getCost());
     }
 
+    /**
+     * Resets the colour of the available buttons
+     */
     private void resetTowerStyle() {
         for (int i = 0; i < player.getTowers().size(); i++) {
             towerButtons.get(i).setStyle("");
@@ -152,15 +158,21 @@ public class InventoryScreenController {
         }
     }
 
-
+    /**
+     * Displays a pop up to alert the player
+     * @param message the error message
+     */
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
+        alert.setTitle("Error!");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
+    /**
+     * Closes
+     */
     @FXML
     private void onCloseClicked() {
         gameEnvironment.launchMainScreen();

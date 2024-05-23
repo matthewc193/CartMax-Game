@@ -118,30 +118,49 @@ public class GameEnvironment {
         clearScreen.run();
         shopScreenLauncher.accept(this);
     }
+
+    /**
+     * Launches the InventoryScreen
+     */
     public void launchInventoryScreen(){
         clearScreen.run();
         inventoryScreenLauncher.accept(this);
     }
+
+    /**
+     * Launches the RoundResultsScreen
+     */
     public void launchRoundResultsScreen() {
         clearScreen.run();
         roundResultsScreenLauncher.accept(this);
     }
+
+    /**
+     * Launches the GameClearScreen
+     */
     public void launchGameClearScreen() {
         clearScreen.run();
         gameClearScreenLauncher.accept(this);
     }
+
+    /**
+     * Launch GameOverScreen
+     */
     public void launchGameOverScreen() {
         clearScreen.run();
         gameOverScreenLauncher.accept(this);
     }
 
+    /**
+     * Closes window
+     */
     public void quitGame(){
         Platform.exit();
     }
 
     /**
      * Sets prevRound
-     * @param prevRound
+     * @param prevRound last round played
      */
     public void setPrevRound(Round prevRound) {
         this.prevRound = prevRound;
