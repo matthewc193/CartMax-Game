@@ -91,7 +91,7 @@ public class Player {
     public boolean buyTower(Tower tower){
         if (this.money >= tower.getCost()){
             this.money -= tower.getCost();
-            this.towers.add(tower);
+            addTower(tower);
             return true;
         }
         else{

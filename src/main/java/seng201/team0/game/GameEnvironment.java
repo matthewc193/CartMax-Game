@@ -1,5 +1,6 @@
 package seng201.team0.game;
 
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 
 import java.util.function.Consumer;
@@ -107,6 +108,7 @@ public class GameEnvironment {
      * Launches the InGameScreen
      */
     public void launchInGameScreen(){
+        this.currentRoundNumber++;
         clearScreen.run();
         inGameLauncher.accept(this);
     }
@@ -134,11 +136,8 @@ public class GameEnvironment {
         gameOverScreenLauncher.accept(this);
     }
 
-    public void startRound(){
-        //To be implemented
-    }
     public void quitGame(){
-        //To be implemented   
+        Platform.exit();
     }
 
     /**
