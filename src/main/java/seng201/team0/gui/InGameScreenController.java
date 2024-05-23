@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.carts.Cart;
 import seng201.team0.game.GameEnvironment;
 import seng201.team0.game.Round;

@@ -1,9 +1,7 @@
 package seng201.team0.game;
 
 import javafx.scene.layout.Pane;
-import seng201.team0.Player;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -11,7 +9,7 @@ import java.util.function.Consumer;
  * of the game and acts as the overall manager for the game.
  * It should keep track of things such as the player,
  * number of rounds, difficulty and
- * current round number
+ * current round number.
  */
 public class GameEnvironment {
 
@@ -30,8 +28,20 @@ public class GameEnvironment {
     int currentRoundNumber;
     String difficulty;
     Pane pane;
-    Round prevRound;
+    Round prevRound; // Keep track of the previous round for the game over and results screen
 
+    /**
+     * Constructor class, sets up all the Consumers and creates a new player.
+     * @param setupScreenLauncher
+     * @param mainScreenLauncher
+     * @param inGameScreenLauncher
+     * @param shopScreenLauncher
+     * @param inventoryScreenLauncher
+     * @param roundResultsScreenLauncher
+     * @param gameClearScreenLauncher
+     * @param gameOverScreenLauncher
+     * @param clearScreen
+     */
     public GameEnvironment(Consumer<GameEnvironment> setupScreenLauncher, Consumer<GameEnvironment> mainScreenLauncher, Consumer<GameEnvironment> inGameScreenLauncher, Consumer<GameEnvironment> shopScreenLauncher, Consumer<GameEnvironment> inventoryScreenLauncher, Consumer<GameEnvironment> roundResultsScreenLauncher, Consumer<GameEnvironment> gameClearScreenLauncher, Consumer<GameEnvironment> gameOverScreenLauncher, Runnable clearScreen) {
         this.setupScreenLauncher = setupScreenLauncher;
         this.mainScreenLauncher = mainScreenLauncher;
@@ -44,12 +54,11 @@ public class GameEnvironment {
         this.clearScreen = clearScreen;
         this.player = new Player();
         this.currentRoundNumber = 0;
-        this.difficulty = "Easy";
+        this.difficulty = "Easy"; // Defaults to Easy if the player does not select difficulty
         launchSetupScreen();
     }
-    /**
-     * Basic getter and setter methods
-     */
+
+     // Basic getter and setter methods
     public Player getPlayer() {
         return player;
     }
@@ -71,26 +80,39 @@ public class GameEnvironment {
     public void setDifficulty(String difficulty){
         this.difficulty = difficulty;
     }
-    /**
-     * This method should start a new round
-     * and increase currentRoundNumber by 1
-     */
 
+    /**
+     * Launches the SetUpScreen
+     */
     public void launchSetupScreen() {
         setupScreenLauncher.accept(this);
     }
+
+    /**
+     * Closes the SetUpScreen and opens the mainMeinScreen.
+     */
     public void closeSetupScreen() {
         clearScreen.run();
         launchMainScreen();
     }
+
+    /**
+     * Launches the MainMenuScreen
+     */
     public void launchMainScreen() {
         clearScreen.run();
         mainScreenLauncher.accept(this);
     }
+    /**
+     * Launches the InGameScreen
+     */
     public void launchInGameScreen(){
         clearScreen.run();
         inGameLauncher.accept(this);
     }
+    /**
+     * Launches the ShopScreen
+     */
     public void launchShopScreen(){
         clearScreen.run();
         shopScreenLauncher.accept(this);

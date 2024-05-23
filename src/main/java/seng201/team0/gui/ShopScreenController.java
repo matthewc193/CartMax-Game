@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.game.GameEnvironment;
 import seng201.team0.towers.*;
 

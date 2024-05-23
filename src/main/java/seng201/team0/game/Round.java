@@ -1,14 +1,10 @@
 package seng201.team0.game;
 
-import com.sun.javafx.UnmodifiableArrayList;
 import javafx.animation.SequentialTransition;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import seng201.team0.Player;
 import seng201.team0.carts.Cart;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Round {
@@ -38,7 +34,7 @@ public class Round {
         transition.stop();
         this.getImageView(cartIndx).setImage(null);
         this.currentCarts.remove(cartIndx);
-        if (allCartsIn && currentCarts == null){
+        if (this.allCartsIn && this.currentCarts.size() == 0){
             this.setRoundComplete(true);
             gameEnvironment.launchRoundResultsScreen();
         }

@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetUpScreenController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="602.0" opacity="0.35" pickOnBounds="true">
+      <ImageView fitHeight="402.0" fitWidth="602.0" opacity="0.35" pickOnBounds="true">
          <image>
             <Image url="@../Img/cartMaxBackground.jpg" />
          </image>
@@ -36,10 +36,10 @@
       <Label fx:id="towerNumberWarning" layoutX="208.0" layoutY="175.0" prefHeight="17.0" prefWidth="151.0" text="Select Three Starting Tower " />
       <Button fx:id="WoodOneButton" alignment="TOP_LEFT" layoutX="19.0" layoutY="216.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Wood Tower 1.0               - Resource Amount = 20 - Reload Speed = 2.0s" wrapText="true" />
       <Button fx:id="WoodTwoButton" alignment="TOP_LEFT" layoutX="19.0" layoutY="304.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Wood Tower 2.0               - Resource Amount = 10 - Reload Speed = 1.0s" wrapText="true" />
-      <Button fx:id="StoneTwoButton" alignment="TOP_LEFT" layoutX="340.0" layoutY="304.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Stone Tower 2.0                - Resource Amount = 5  - Reload Speed = 2.0s" wrapText="true" />
+      <Button fx:id="StoneTwoButton" alignment="TOP_LEFT" layoutX="340.0" layoutY="304.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Stone Tower 2.0                - Resource Amount = 5   - Reload Speed = 2.0s" wrapText="true" />
       <Button fx:id="StoneOneButton" alignment="TOP_LEFT" layoutX="340.0" layoutY="217.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Stone Tower 1.0                - Resource Amount = 10 - Reload Speed = 3.0s" wrapText="true" />
       <Button fx:id="ClayOneButton" alignment="TOP_LEFT" layoutX="182.0" layoutY="217.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="149.0" text="Clay Tower 1.0                 - Resource Amount = 8  - Reload Speed = 1.6s" wrapText="true" />
-      <Button fx:id="ClayTwoButton" alignment="TOP_LEFT" layoutX="182.0" layoutY="304.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Clay Tower 2.0                 - Resource Amount = 10 - Reload Speed = 2.5s" wrapText="true" />
+      <Button fx:id="ClayTwoButton" alignment="TOP_LEFT" layoutX="182.0" layoutY="304.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="151.0" text="Clay Tower 2.0                 - Resource Amount = 15 - Reload Speed = 2.5s" wrapText="true" />
       <Button fx:id="continueButton" layoutX="516.0" layoutY="330.0" mnemonicParsing="false" text="Continue" />
       <Button fx:id="resetTowersButton" layoutX="505.0" layoutY="242.0" mnemonicParsing="false" text="Reset Towers" />
       <Slider fx:id="roundNumberSlider" blockIncrement="1.0" layoutX="360.0" layoutY="101.0" majorTickUnit="2.0" max="15.0" min="5.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />

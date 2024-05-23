@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.game.GameEnvironment;
 import seng201.team0.towers.Tower;
 

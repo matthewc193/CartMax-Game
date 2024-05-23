@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.game.GameEnvironment;
 
 import java.io.IOException;

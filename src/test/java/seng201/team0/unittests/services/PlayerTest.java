@@ -1,9 +1,8 @@
 package seng201.team0.unittests.services;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.towers.ClayOne;
 import seng201.team0.towers.Tower;
 

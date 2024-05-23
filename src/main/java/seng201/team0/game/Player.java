@@ -1,4 +1,4 @@
-package seng201.team0;
+package seng201.team0.game;
 
 import javafx.beans.value.ObservableValue;
 import seng201.team0.towers.Tower;
@@ -20,7 +20,7 @@ public class Player {
     public Player() {
         this.name = null;
         this.towers = new ArrayList<>();
-        this.money = 2222220;
+        this.money = 0;
     }
 
     /**

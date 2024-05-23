@@ -2,6 +2,11 @@ package seng201.team0.carts;
 
 import javafx.scene.image.Image;
 
+/**
+ * Abstract class for clay, wood and stone carts.
+ * It's method handle all cart variables and filling
+ * the cart with materials.
+ */
 public abstract class Cart {
     String resourceType;
     int currentResourceAmount;
@@ -27,7 +32,6 @@ public abstract class Cart {
      * If it exceeds that cartCapacity it should update cartFilled to true
      */
     public void increaseResourceAmount(int resourceAmount){
-        System.out.println("INCREASING RESOURCE AMOUNT");
         currentResourceAmount += resourceAmount;
         if(currentResourceAmount >= cartCapacity){
             cartFilled = true;

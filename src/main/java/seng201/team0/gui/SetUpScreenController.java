@@ -8,7 +8,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.game.GameEnvironment;
 import seng201.team0.towers.Tower;
 import seng201.team0.towers.*;

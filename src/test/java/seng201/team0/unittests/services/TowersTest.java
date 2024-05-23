@@ -1,7 +1,7 @@
 package seng201.team0.unittests.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.towers.WoodOne;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -2,10 +2,9 @@ package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import seng201.team0.Player;
+import seng201.team0.game.Player;
 import seng201.team0.game.GameEnvironment;
 import javafx.scene.control.*;
-import seng201.team0.towers.Tower;
 
 
 /**
