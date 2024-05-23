@@ -120,7 +120,7 @@ public class GameEnvironment {
     }
 
     /**
-     * Launches the InventoryScreen
+     * Launches the inventoryScreen
      */
     public void launchInventoryScreen(){
         clearScreen.run();
@@ -128,7 +128,7 @@ public class GameEnvironment {
     }
 
     /**
-     * Launches the RoundResultsScreen
+     * Launches the round results screen.
      */
     public void launchRoundResultsScreen() {
         clearScreen.run();
@@ -136,7 +136,8 @@ public class GameEnvironment {
     }
 
     /**
-     * Launches the GameClearScreen
+     * Launches Games Clear screen.
+     * Used when a player completes the whole game.
      */
     public void launchGameClearScreen() {
         clearScreen.run();
@@ -144,7 +145,7 @@ public class GameEnvironment {
     }
 
     /**
-     * Launch GameOverScreen
+     * Launches GameOverScreen
      */
     public void launchGameOverScreen() {
         clearScreen.run();
@@ -152,7 +153,7 @@ public class GameEnvironment {
     }
 
     /**
-     * Closes window
+     * Closes the application.
      */
     public void quitGame(){
         Platform.exit();
@@ -166,6 +167,10 @@ public class GameEnvironment {
         this.prevRound = prevRound;
     }
 
+    /**
+     * Return the previous round
+     * @return
+     */
     public Round getPrevRound(){
         return this.prevRound;
     }

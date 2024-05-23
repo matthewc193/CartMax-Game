@@ -1,6 +1,11 @@
 package seng201.team0.towers;
-
+/**
+ * Class for Wood two tower
+ */
 public class WoodTwo extends Tower {
+    /**
+     * Constructor method sets, default values.
+     */
     public WoodTwo(){
         this.resourceType = "Wood";
         this.cost = 200;

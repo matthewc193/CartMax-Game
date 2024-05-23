@@ -6,16 +6,18 @@ import seng201.team0.towers.Tower;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the properties for the player.
+ * Such as money and towers.
+ */
 public class Player {
-    /**
-     * Instance variables
-     */
     String name;
     int money;
     ArrayList<Tower> towers;
 
     /**
-     * Constructor
+     * Constructor, set player to null
+     * and initializes money and towers.
      */
     public Player() {
         this.name = null;
@@ -23,9 +25,8 @@ public class Player {
         this.money = 0;
     }
 
-    /**
-     * Basic getter and setter methods
-     */
+
+    // Basic getter and setter methods
     public String getName() {
         return name;
     }
@@ -54,11 +55,17 @@ public class Player {
     }
 
     /**
-     * Methods to increase and decrease account balance of player
+     * Methodsto increase account balance of player
+     * @param amount
      */
     public void increaseMoney(int amount){
         this.money += amount;
     }
+
+    /**
+     * Method to decrease the balance of the player.
+     * @param amount
+     */
     public void decreaseMoney(int amount){
         this.money -= amount;
     }
@@ -89,10 +96,10 @@ public class Player {
     }
 
     /**
-     * Buys a tower if the player has sufficient money
-     * @param tower the tower being bought
-     * @return true if there is sufficient money and tower was bought
-     * false if player doesn't have sufficient money
+     * If player has enough money tower will be added to the
+     * towers ArrayList and the player will.
+     * @param tower
+     * @return True if player has enough money, false otherwise
      */
     public boolean buyTower(Tower tower){
         if (this.money >= tower.getCost()){
@@ -106,8 +113,8 @@ public class Player {
     }
 
     /**
-     * Sells a tower from the player's towers
-     * @param playerTowerInx the index of the tower being sold
+     * Removes tower from the player's ArrayList and
+     * increase player's account balance.
      */
     public void sellTower(int playerTowerInx){
         if (playerTowerInx < 0 || playerTowerInx >= towers.size()) {
@@ -118,10 +125,10 @@ public class Player {
     }
 
     /**
-     * Sets the status of the newly added tower to "select"
-     * if there are less than 5 towers with status "selected"
-     * else sets to "reserved"
-     * @param latestTower the newly added tower
+     * Sets the status of the towers (reversed or selected)
+     * based on how many tower are currently selected.
+     * (max of 5)
+     * @param latestTower
      */
     private void setLatestTowerStatus(Tower latestTower) {
         int count = 0;

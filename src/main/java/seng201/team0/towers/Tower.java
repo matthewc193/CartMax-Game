@@ -2,6 +2,9 @@ package seng201.team0.towers;
 
 import seng201.team0.game.Player;
 
+/**
+ * Parent class for all tower types. Create method and variables which are inherited by the child classes.
+ */
 public abstract class Tower {
     int resourceAmount;
     double reloadSpeed;
@@ -10,9 +13,7 @@ public abstract class Tower {
     String towerName;
     String status;
 
-    /**
-     * Basic getter and setter methods
-     */
+     // Basic getter and setter methods
     public int getResourceAmount() {return resourceAmount;}
     public double getReloadSpeed() {return reloadSpeed;}
     public String getResourceType() {return resourceType;}

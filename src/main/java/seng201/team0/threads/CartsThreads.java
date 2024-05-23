@@ -2,6 +2,7 @@ package seng201.team0.threads;
 
 
 import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
 import seng201.team0.carts.Cart;
 import seng201.team0.carts.ClayCart;
@@ -82,6 +83,4 @@ public class CartsThreads extends Thread {
             return nextCart;
         }
     }
-
-
 }

@@ -89,7 +89,6 @@ public class ShopScreenController {
      * actions and tower stats
      */
     public void initialize(){
-
         // Takes player back to main menu
         backToMainMenuButton.setOnAction(actionEvent -> {
             onBackToMainMenuButtonClicked();
@@ -109,43 +108,15 @@ public class ShopScreenController {
             int finalI = i;
             if (containsInstanceOfClass(this.player.getTowers(), towerTypes.get(finalI).getClass())){
                 towerShopButtons.get(i).setText(towerOwnedText.get(i));
-
             }
             else{
                 towerShopButtons.get(i).setText(towerLockedText.get(i));
             }
-
         }
 
-        //Sets actions for all button so that the stats are displayed
-        for (int i = 0; i < towerShopButtons.size(); i++){
-            int finalI = i;
-            towerShopButtons.get(i).setOnAction(event -> {
-                // Player owns tower
-                if (containsInstanceOfClass(this.player.getTowers(), towerTypes.get(finalI).getClass())){
-                    int playerTowersIndx = findInstanceIndex(player.getTowers(), towerTypes.get(finalI).getClass());
-                    setStatsTowerOwned(playerTowersIndx); // Displays stats
-                    setUpgradeButtonsTowerOwned(playerTowersIndx); // Sets action for upgrade buttons
-                    setSellButton(playerTowersIndx, towerShopButtons.get(finalI)); // Sets actions for the sell button
-                }
-                // Player does not own tower
-                else{
-                    setStatsTowerLocked(finalI); // Displays stats
-                    setUpgradeButtonsTowerLocked(finalI); // Sets the upgrade button for the tower
-                    setBuyButton(towerTypes.get(finalI), towerShopButtons.get(finalI)); // Sets the tower buy button
-                    }
+        setTowerShopButtons(towerShopButtons); //Sets actions for all button so that the stats are displayed
 
-                towerShopButtons.get(finalI).setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
-                for(int j = 0; j < towerShopButtons.size(); j++){  // Setting the style of other button to default
-                    if (j != finalI){
-                        towerShopButtons.get(j).setStyle("");
-                    }
-                }
-            });
-        }
-
-        // Displays the player's money
-        playerMoneyLabel.setText(String.valueOf(player.getMoney()));
+        playerMoneyLabel.setText(String.valueOf(player.getMoney())); // Displays the player's money
 
     }
 
@@ -356,6 +327,37 @@ public class ShopScreenController {
                 initialize(); // Update the player money and the button text to say locked
             }
         });
+    }
+
+    /**
+     * Sets up the functionality  for the tower shop buttons
+     * @param towerShopButtons
+     */
+    private void setTowerShopButtons(List<Button> towerShopButtons){
+        for (int i = 0; i < towerShopButtons.size(); i++){
+            int finalI = i;
+            towerShopButtons.get(i).setOnAction(event -> {
+                // Player owns tower
+                if (containsInstanceOfClass(this.player.getTowers(), towerTypes.get(finalI).getClass())){
+                    int playerTowersIndx = findInstanceIndex(player.getTowers(), towerTypes.get(finalI).getClass());
+                    setStatsTowerOwned(playerTowersIndx); // Displays stats
+                    setUpgradeButtonsTowerOwned(playerTowersIndx); // Sets action for upgrade buttons
+                    setSellButton(playerTowersIndx, towerShopButtons.get(finalI)); // Sets actions for the sell button
+                }
+                // Player does not own tower
+                else{
+                    setStatsTowerLocked(finalI); // Displays stats
+                    setUpgradeButtonsTowerLocked(finalI); // Sets the upgrade button for the tower
+                    setBuyButton(towerTypes.get(finalI), towerShopButtons.get(finalI)); // Sets the tower buy button
+                }
+                towerShopButtons.get(finalI).setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
+                for(int j = 0; j < towerShopButtons.size(); j++){  // Setting the style of other button to default
+                    if (j != finalI){
+                        towerShopButtons.get(j).setStyle("");
+                    }
+                }
+            });
+        }
     }
 
     /**

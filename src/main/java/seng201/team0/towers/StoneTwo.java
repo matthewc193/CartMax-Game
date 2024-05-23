@@ -1,6 +1,11 @@
 package seng201.team0.towers;
-
+/**
+ * Class for Stone two tower
+ */
 public class StoneTwo extends Tower {
+    /**
+     * Constructor method sets, default values.
+     */
     public StoneTwo(){
         this.resourceType = "Stone";
         this.cost = 220;
