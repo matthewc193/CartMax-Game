@@ -20,7 +20,7 @@ public class FXWindow extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/FXwrapper.fxml"));
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/FXWrapper.fxml"));
         Parent root = baseLoader.load();
         FXWrapper fxWrapper = baseLoader.getController();
         Scene scene = new Scene(root, 600,400);
