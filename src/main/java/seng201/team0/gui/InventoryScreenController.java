@@ -11,10 +11,10 @@ import seng201.team0.towers.Tower;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Controller for inventoryScreen.fxml
+ */
 public class InventoryScreenController {
-    /**
-     * FXML imports
-     */
     @FXML
     private Button tower1Button;
     @FXML
@@ -51,28 +51,35 @@ public class InventoryScreenController {
     private Button selectButton;
     @FXML
     private Button reserveButton;
-    /**
-     * Instance variables
-     */
     private final GameEnvironment gameEnvironment;
     private Player player;
     private Tower currentTower;
     private List<Button> towerButtons;
     private List<Label> towerStatusLabels;
+
     /**
-     * Constructor method
+     * Constructor sets gameEnvironment and player
+     * @param gameEnvironment contains current game information
      */
     public InventoryScreenController(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
+        this.player = gameEnvironment.getPlayer();
     }
 
+    /**
+     * Initialiser sets towerButtons and towerStatusLabels with the 6 buttons and 6 labels respectively,
+     * displays tower information on each of the buttons,
+     * sets the current tower to the first tower in the player's inventory and displays its stats,
+     * updates the current tower when a tower button is clicked and displays corresponding stats, and
+     * changes the status of the current tower when the select or reserve button is clicked
+     */
     @FXML
     public void initialize() {
-        this.player = gameEnvironment.getPlayer();
-        currentTower = null;
         towerButtons = Arrays.asList(tower1Button, tower2Button, tower3Button, tower4Button, tower5Button, tower6Button);
         towerStatusLabels = Arrays.asList(tower1StatusLabel, tower2StatusLabel, tower3StatusLabel, tower4StatusLabel, tower5StatusLabel, tower6StatusLabel);
         displayTowers();
+        displayTowerStats(player.getTowers().get(0)); // First tower on the list is set as current initially
+        towerButtons.get(0).setStyle("-fx-background-color: #b3b3b3; -fx-background-radius: 5;");
         for (int i = 0; i < player.getTowers().size(); i++) {
             int finalI = i;
             towerButtons.get(i).setOnAction(event -> {
@@ -86,7 +93,7 @@ public class InventoryScreenController {
     }
 
     /**
-     * Displays current player owned towers and their status ("selected" or "reserved")
+     * Displays current player owned towers and their status as "selected" or "reserved"
      */
     private void displayTowers() {
         List<Tower> towers = player.getTowers();
@@ -105,7 +112,6 @@ public class InventoryScreenController {
 
     /**
      * Sets the tower clicked by the player as current and displays its stats
-     *
      * @param tower the tower clicked by the player
      */
     private void displayTowerStats(Tower tower) {
@@ -116,6 +122,9 @@ public class InventoryScreenController {
         costLabel.setText("Cost:\n" + tower.getCost());
     }
 
+    /**
+     * Resets the colour of the available buttons
+     */
     private void resetTowerStyle() {
         for (int i = 0; i < player.getTowers().size(); i++) {
             towerButtons.get(i).setStyle("");
@@ -152,15 +161,21 @@ public class InventoryScreenController {
         }
     }
 
-
+    /**
+     * Displays a pop up to alert the player
+     * @param message the error message
+     */
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
+        alert.setTitle("Error!");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
+    /**
+     * Closes the inventory screen and redirects back to main screen
+     */
     @FXML
     private void onCloseClicked() {
         gameEnvironment.launchMainScreen();

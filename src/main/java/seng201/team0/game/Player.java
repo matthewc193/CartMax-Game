@@ -117,6 +117,9 @@ public class Player {
      * increase player's account balance.
      */
     public void sellTower(int playerTowerInx){
+        if (playerTowerInx < 0 || playerTowerInx >= towers.size()) {
+            throw new IndexOutOfBoundsException("Tower index out of bounds");
+        }
         this.money += towers.get(playerTowerInx).getCost();
         this.towers.remove(playerTowerInx);
     }

@@ -161,7 +161,7 @@ public class GameEnvironment {
 
     /**
      * Sets prevRound
-     * @param prevRound
+     * @param prevRound last round played
      */
     public void setPrevRound(Round prevRound) {
         this.prevRound = prevRound;
