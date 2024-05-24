@@ -2,7 +2,7 @@
 
 ## Authors
 - Ayamo Koide
-- 
+- Matthew Crocker
 
 ## Running Jar
 1. Run the command `java -jar seng201_team0-1.0-SNAPSHOT.jar` to open the application.

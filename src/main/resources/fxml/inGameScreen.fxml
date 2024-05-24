@@ -9,57 +9,57 @@
    <children>
       <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="550.0" layoutY="279.0" opacity="0.75" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="134.0" layoutX="467.0" layoutY="230.0" opacity="0.75" pickOnBounds="true" rotate="90.0">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="447.0" layoutY="183.0" opacity="0.75" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="134.0" layoutX="366.0" layoutY="231.0" opacity="0.75" pickOnBounds="true" rotate="90.0">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="345.0" layoutY="279.0" opacity="0.75" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="134.0" layoutX="263.0" layoutY="231.0" opacity="0.75" pickOnBounds="true" rotate="90.0">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="242.0" layoutY="184.0" opacity="0.75" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="134.0" layoutX="161.0" layoutY="232.0" opacity="0.75" pickOnBounds="true" rotate="90.0">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="142.0" layoutY="279.0" opacity="0.75" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="134.0" layoutX="65.0" layoutY="229.0" opacity="0.75" pickOnBounds="true" rotate="90.0">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="73.0" fitWidth="117.0" layoutY="182.0" opacity="0.75" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
+            <Image url="@../Img/rail-transport-train-track-computer-icons-railway-train-f23f5e4c8e5a29f820e3cbf7a44266b5.png" />
          </image>
       </ImageView>
       <Button fx:id="inventoryTowerOne" layoutX="25.0" layoutY="20.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="101.0" text="N/A" />
