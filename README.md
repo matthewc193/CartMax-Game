@@ -17,7 +17,3 @@ IntelliJ has built-in support for Gradle. To import your project:
 - Launch IntelliJ and choose `Open` from the start-up window.
 - Select the project and click open
 - At this point in the bottom right notifications you may be prompted to 'load gradle scripts', If so, click load
-
-## Running Tests
-1. Open a command line interface inside the project directory and run `./gradlew test` to run the tests.
-2. Test results should be printed to the command line
