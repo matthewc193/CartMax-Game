@@ -16,7 +16,7 @@
       </ImageView>
       <Button fx:id="nextRoundButton" layoutX="213.0" layoutY="155.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="142.0" text="Next Round " />
       <Button fx:id="shopButton" layoutX="301.0" layoutY="283.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="129.0" text="Shop" />
-      <Label layoutX="232.0" layoutY="11.0" prefHeight="47.0" prefWidth="136.0" text="CartMax">
+      <Label layoutX="219.0" layoutY="11.0" prefHeight="47.0" prefWidth="161.0" text="Cart Max">
          <font>
             <Font name="Verdana Bold" size="29.0" />
          </font></Label>
